@@ -23,6 +23,4 @@ namespace leetcode
             return Solution{}.twoSum(data, 6) == std::vector<int>{0, 1};
         }
     };
-
-    
 }

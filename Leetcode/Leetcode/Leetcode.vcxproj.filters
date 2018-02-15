@@ -24,19 +24,22 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Prob0001.TwoSum.h">
-      <Filter>Header Files\Solution</Filter>
-    </ClInclude>
     <ClInclude Include="problem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="expect.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Prob0002.AddTwoNumbers.h">
+    <ClInclude Include="problem\Prob0001.TwoSum.h">
       <Filter>Header Files\Solution</Filter>
     </ClInclude>
-    <ClInclude Include="Prob0003.LongestSubstringWithoutRepeatingCharacters.h">
+    <ClInclude Include="problem\Prob0002.AddTwoNumbers.h">
+      <Filter>Header Files\Solution</Filter>
+    </ClInclude>
+    <ClInclude Include="problem\Prob0003.LongestSubstringWithoutRepeatingCharacters.h">
+      <Filter>Header Files\Solution</Filter>
+    </ClInclude>
+    <ClInclude Include="problem\Prob0004.MedianofTwoSortedArrays.h">
       <Filter>Header Files\Solution</Filter>
     </ClInclude>
   </ItemGroup>

@@ -7,3 +7,4 @@ namespace leetcode
 #include "Prob0001.TwoSum.h"
 #include "Prob0002.AddTwoNumbers.h"
 #include "Prob0003.LongestSubstringWithoutRepeatingCharacters.h"
+#include "Prob0004.MedianofTwoSortedArrays.h"

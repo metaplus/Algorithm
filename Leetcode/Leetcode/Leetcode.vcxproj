@@ -92,6 +92,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <EnablePREfast>true</EnablePREfast>
+      <AdditionalIncludeDirectories>problem;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -150,10 +151,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="expect.hpp" />
-    <ClInclude Include="Prob0001.TwoSum.h" />
-    <ClInclude Include="Prob0002.AddTwoNumbers.h" />
     <ClInclude Include="problem.h" />
-    <ClInclude Include="Prob0003.LongestSubstringWithoutRepeatingCharacters.h" />
+    <ClInclude Include="problem\Prob0001.TwoSum.h" />
+    <ClInclude Include="problem\Prob0002.AddTwoNumbers.h" />
+    <ClInclude Include="problem\Prob0003.LongestSubstringWithoutRepeatingCharacters.h" />
+    <ClInclude Include="problem\Prob0004.MedianofTwoSortedArrays.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
