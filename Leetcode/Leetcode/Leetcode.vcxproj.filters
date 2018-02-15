@@ -16,6 +16,12 @@
     <Filter Include="Header Files\Solution">
       <UniqueIdentifier>{eb86d3a2-ef41-4fd5-936a-3ffaaba2c540}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Learn">
+      <UniqueIdentifier>{653265c7-928f-4501-bb32-e9b0b8802d18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Learn\BinaryTree">
+      <UniqueIdentifier>{ffefc065-7fab-49ab-994b-159ddb06e1b7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -41,6 +47,18 @@
     </ClInclude>
     <ClInclude Include="problem\Prob0004.MedianofTwoSortedArrays.h">
       <Filter>Header Files\Solution</Filter>
+    </ClInclude>
+    <ClInclude Include="problem\Prob0005.LongestPalindromicSubstring.h">
+      <Filter>Header Files\Solution</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTree\BinaryTreePreorderTraversal.h">
+      <Filter>Header Files\Learn\BinaryTree</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTree\BinaryTreeInorderTraversal.h">
+      <Filter>Header Files\Learn\BinaryTree</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTree\BinaryTreeLevelOrderTraversal.h">
+      <Filter>Header Files\Learn\BinaryTree</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

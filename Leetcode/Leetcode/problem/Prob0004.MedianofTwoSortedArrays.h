@@ -4,6 +4,8 @@ namespace leetcode
     template<>
     struct problem<4>
     {
+#pragma warning(push)
+#pragma warning(disable:4715)
         class Solution {
         public:
             enum side { left, right };
@@ -59,6 +61,7 @@ namespace leetcode
                     s1 != vec1.size() ? s2 != vec2.size() ? std::min(vec1[s1], vec2[s2]) : vec1[s1] : vec2[s2]);
             }
         };
+#pragma warning(pop)
         static bool test()
         {
             std::vector<bool> result{
