@@ -153,8 +153,14 @@
     <ClInclude Include="BinaryTree\BinaryTreeInorderTraversal.h" />
     <ClInclude Include="BinaryTree\BinaryTreeLevelOrderTraversal.h" />
     <ClInclude Include="BinaryTree\BinaryTreePreorderTraversal.h" />
+    <ClInclude Include="BinaryTree\ConstructBinaryTreefromInorderandPostorderTraversal.h" />
+    <ClInclude Include="BinaryTree\ConstructBinaryTreefromPreorderandInorderTraversal.h" />
+    <ClInclude Include="BinaryTree\CountUnivalueSubtrees.h" />
+    <ClInclude Include="BinaryTree\MaximumDepthofBinaryTree.h" />
+    <ClInclude Include="BinaryTree\PathSum.h" />
+    <ClInclude Include="BinaryTree\SymmetricTree.h" />
     <ClInclude Include="expect.hpp" />
-    <ClInclude Include="problem.h" />
+    <ClInclude Include="pch.h" />
     <ClInclude Include="problem\Prob0001.TwoSum.h" />
     <ClInclude Include="problem\Prob0002.AddTwoNumbers.h" />
     <ClInclude Include="problem\Prob0003.LongestSubstringWithoutRepeatingCharacters.h" />

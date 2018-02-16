@@ -30,9 +30,6 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="problem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="expect.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -58,6 +55,27 @@
       <Filter>Header Files\Learn\BinaryTree</Filter>
     </ClInclude>
     <ClInclude Include="BinaryTree\BinaryTreeLevelOrderTraversal.h">
+      <Filter>Header Files\Learn\BinaryTree</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTree\MaximumDepthofBinaryTree.h">
+      <Filter>Header Files\Learn\BinaryTree</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTree\SymmetricTree.h">
+      <Filter>Header Files\Learn\BinaryTree</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTree\PathSum.h">
+      <Filter>Header Files\Learn\BinaryTree</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTree\CountUnivalueSubtrees.h">
+      <Filter>Header Files\Learn\BinaryTree</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTree\ConstructBinaryTreefromInorderandPostorderTraversal.h">
+      <Filter>Header Files\Learn\BinaryTree</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTree\ConstructBinaryTreefromPreorderandInorderTraversal.h">
       <Filter>Header Files\Learn\BinaryTree</Filter>
     </ClInclude>
   </ItemGroup>
