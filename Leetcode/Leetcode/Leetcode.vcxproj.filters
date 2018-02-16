@@ -78,6 +78,18 @@
     <ClInclude Include="BinaryTree\ConstructBinaryTreefromPreorderandInorderTraversal.h">
       <Filter>Header Files\Learn\BinaryTree</Filter>
     </ClInclude>
+    <ClInclude Include="BinaryTree\PopulatingNextRightPointersinEachNode.h">
+      <Filter>Header Files\Learn\BinaryTree</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTree\PopulatingNextRightPointersinEachNodeII.h">
+      <Filter>Header Files\Learn\BinaryTree</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTree\LowestCommonAncestorofaBinaryTree.h">
+      <Filter>Header Files\Learn\BinaryTree</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTree\SerializeandDeserializeBinaryTree.h">
+      <Filter>Header Files\Learn\BinaryTree</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

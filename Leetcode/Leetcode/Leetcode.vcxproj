@@ -156,8 +156,12 @@
     <ClInclude Include="BinaryTree\ConstructBinaryTreefromInorderandPostorderTraversal.h" />
     <ClInclude Include="BinaryTree\ConstructBinaryTreefromPreorderandInorderTraversal.h" />
     <ClInclude Include="BinaryTree\CountUnivalueSubtrees.h" />
+    <ClInclude Include="BinaryTree\LowestCommonAncestorofaBinaryTree.h" />
     <ClInclude Include="BinaryTree\MaximumDepthofBinaryTree.h" />
     <ClInclude Include="BinaryTree\PathSum.h" />
+    <ClInclude Include="BinaryTree\PopulatingNextRightPointersinEachNode.h" />
+    <ClInclude Include="BinaryTree\PopulatingNextRightPointersinEachNodeII.h" />
+    <ClInclude Include="BinaryTree\SerializeandDeserializeBinaryTree.h" />
     <ClInclude Include="BinaryTree\SymmetricTree.h" />
     <ClInclude Include="expect.hpp" />
     <ClInclude Include="pch.h" />

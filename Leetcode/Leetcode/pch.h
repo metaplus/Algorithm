@@ -18,3 +18,7 @@ namespace leetcode
 #include "BinaryTree/CountUnivalueSubtrees.h"
 #include "BinaryTree/ConstructBinaryTreefromInorderandPostorderTraversal.h"
 #include "BinaryTree/ConstructBinaryTreefromPreorderandInorderTraversal.h"
+#include "BinaryTree/PopulatingNextRightPointersinEachNode.h"
+#include "BinaryTree/PopulatingNextRightPointersinEachNodeII.h"
+#include "BinaryTree/LowestCommonAncestorofaBinaryTree.h"
+#include "BinaryTree/SerializeandDeserializeBinaryTree.h"
