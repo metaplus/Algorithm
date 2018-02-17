@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{88EE3AEB-2537-4B59-96C2-AB7BEE2C33E8}</ProjectGuid>
+    <ProjectGuid>{2E826B7A-5CA2-4198-8E4B-6106FBBC1249}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Leetcode</RootNamespace>
+    <RootNamespace>Algorithms4thEdition</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -72,8 +72,6 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <CodeAnalysisRuleSet>NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -86,13 +84,12 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <EnablePREfast>true</EnablePREfast>
-      <AdditionalIncludeDirectories>problem;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -150,31 +147,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="BinaryTree\BinaryTreeInorderTraversal.h" />
-    <ClInclude Include="BinaryTree\BinaryTreeLevelOrderTraversal.h" />
-    <ClInclude Include="BinaryTree\BinaryTreePreorderTraversal.h" />
-    <ClInclude Include="BinaryTree\ConstructBinaryTreefromInorderandPostorderTraversal.h" />
-    <ClInclude Include="BinaryTree\ConstructBinaryTreefromPreorderandInorderTraversal.h" />
-    <ClInclude Include="BinaryTree\CountUnivalueSubtrees.h" />
-    <ClInclude Include="BinaryTree\LowestCommonAncestorofaBinaryTree.h" />
-    <ClInclude Include="BinaryTree\MaximumDepthofBinaryTree.h" />
-    <ClInclude Include="BinaryTree\PathSum.h" />
-    <ClInclude Include="BinaryTree\PopulatingNextRightPointersinEachNode.h" />
-    <ClInclude Include="BinaryTree\PopulatingNextRightPointersinEachNodeII.h" />
-    <ClInclude Include="BinaryTree\SerializeandDeserializeBinaryTree.h" />
-    <ClInclude Include="BinaryTree\SymmetricTree.h" />
-    <ClInclude Include="expect.hpp" />
-    <ClInclude Include="pch.h" />
-    <ClInclude Include="problem\Prob0001.TwoSum.h" />
-    <ClInclude Include="problem\Prob0002.AddTwoNumbers.h" />
-    <ClInclude Include="problem\Prob0003.LongestSubstringWithoutRepeatingCharacters.h" />
-    <ClInclude Include="problem\Prob0004.MedianofTwoSortedArrays.h" />
-    <ClInclude Include="problem\Prob0005.LongestPalindromicSubstring.h" />
+    <ClInclude Include="Sorting\ElementarySorts.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Leetcode.cpp" />
+    <ClCompile Include="Algorithms-4thEdition.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
