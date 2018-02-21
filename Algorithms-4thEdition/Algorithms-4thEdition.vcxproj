@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Searching\BinarySearchTree.h" />
     <ClInclude Include="Sorting\ElementarySorts.h" />
     <ClInclude Include="Sorting\MergeSort.h" />
     <ClInclude Include="Sorting\PriorityQueue.h" />
