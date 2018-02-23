@@ -42,6 +42,9 @@
     <ClInclude Include="Searching\BinarySearchTree.h">
       <Filter>Header Files\Searching</Filter>
     </ClInclude>
+    <ClInclude Include="Searching\BalancedSearchTree.h">
+      <Filter>Header Files\Searching</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
