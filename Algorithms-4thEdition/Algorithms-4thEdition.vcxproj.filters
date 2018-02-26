@@ -19,6 +19,9 @@
     <Filter Include="Header Files\Searching">
       <UniqueIdentifier>{60daf46f-8049-4bdc-b707-63e63ae3ca09}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Graph">
+      <UniqueIdentifier>{14fb1350-6095-4ff3-be2f-8266bde6983a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -44,6 +47,9 @@
     </ClInclude>
     <ClInclude Include="Searching\BalancedSearchTree.h">
       <Filter>Header Files\Searching</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph\DirectGraph.h">
+      <Filter>Header Files\Graph</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -3,11 +3,11 @@
 #include <memory>
 namespace searching
 {
-    template<typename Key, typename Value, typename Compare = std::less<Key>>
-    struct red_black_tree   // height < 2lgN
-    {                       // assume left lean tree for 3-node
+    template<typename Key, typename Value, typename Compare = std::less<Key>>   // height < 2lgN   
+    struct red_black_tree                                                       // average path length ~ 1.00lgN
+    {                                                                           // assume left lean tree for 3-node
         enum color { red, black };
-        enum direction { left, right };// average path length ~ 1.00lgN
+        enum direction { left, right };
         struct node
         {
             Key key;
@@ -65,7 +65,7 @@ namespace searching
                 pnode->value = std::move(value);
                 return *pnode;
             }
-            auto& inserted = cmp(key, pnode->key)  ? emplace_impl(key, value, pnode->left) : emplace_impl(key, value, pnode->right);
+            auto& inserted = cmp(key, pnode->key) ? emplace_impl(key, value, pnode->left) : emplace_impl(key, value, pnode->right);
             if (!is_red(pnode->left) && is_red(pnode->right)) rotate(left, pnode);
             if (is_red(pnode->left) && is_red(pnode->left->left)) rotate(right, pnode);
             if (is_red(pnode->left) && is_red(pnode->right)) flip(pnode);
