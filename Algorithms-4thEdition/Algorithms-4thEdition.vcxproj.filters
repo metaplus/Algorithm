@@ -51,6 +51,9 @@
     <ClInclude Include="Graph\DirectGraph.h">
       <Filter>Header Files\Graph</Filter>
     </ClInclude>
+    <ClInclude Include="Graph\MinimumSpanningTree.h">
+      <Filter>Header Files\Graph</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

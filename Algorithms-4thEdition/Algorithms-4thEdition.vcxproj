@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Graph\DirectGraph.h" />
+    <ClInclude Include="Graph\MinimumSpanningTree.h" />
     <ClInclude Include="Searching\BalancedSearchTree.h" />
     <ClInclude Include="Searching\BinarySearchTree.h" />
     <ClInclude Include="Sorting\ElementarySorts.h" />
