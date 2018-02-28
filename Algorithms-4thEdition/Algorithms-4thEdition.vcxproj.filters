@@ -22,6 +22,9 @@
     <Filter Include="Header Files\Graph">
       <UniqueIdentifier>{14fb1350-6095-4ff3-be2f-8266bde6983a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\String">
+      <UniqueIdentifier>{8a4771e4-21d1-4671-b01b-47d21c17e7cf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -53,6 +56,9 @@
     </ClInclude>
     <ClInclude Include="Graph\MinimumSpanningTree.h">
       <Filter>Header Files\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="String\StringSort.h">
+      <Filter>Header Files\String</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
