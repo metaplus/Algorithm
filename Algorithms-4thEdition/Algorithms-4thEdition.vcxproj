@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClInclude Include="Graph\DirectGraph.h" />
     <ClInclude Include="Graph\MinimumSpanningTree.h" />
+    <ClInclude Include="Graph\ShortestPath.h" />
     <ClInclude Include="Searching\BalancedSearchTree.h" />
     <ClInclude Include="Searching\BinarySearchTree.h" />
     <ClInclude Include="Sorting\ElementarySorts.h" />
@@ -157,6 +158,7 @@
     <ClInclude Include="Sorting\QuickSort.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="String\StringSort.h" />
+    <ClInclude Include="String\Trie.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>

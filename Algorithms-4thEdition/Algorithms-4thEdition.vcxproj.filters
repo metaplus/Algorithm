@@ -60,6 +60,12 @@
     <ClInclude Include="String\StringSort.h">
       <Filter>Header Files\String</Filter>
     </ClInclude>
+    <ClInclude Include="Graph\ShortestPath.h">
+      <Filter>Header Files\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="String\Trie.h">
+      <Filter>Header Files\String</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

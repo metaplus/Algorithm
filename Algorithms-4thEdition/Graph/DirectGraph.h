@@ -31,6 +31,8 @@ namespace graph
             void to(const Vertex& v) { to_ = v; }
             double weight() const { return  weight_; }
             void weight(const int w) { weight_ = w; }
+            bool operator<(const edge& r) const { return weight_ < r.weight_; }
+            bool operator>(const edge& r) const { return r < *this; }
         };
     private:
         std::map<vertex, std::forward_list<edge>> data_;
@@ -38,11 +40,6 @@ namespace graph
     public:
         size_t count_vertex() const 
         {
-//            std::vector<Vertex> result;
-//            result.reserve(data.size());
-//            std::generate_n(std::back_inserter(result), data.size(),
-//                [iter = data.cbegin()]() mutable { return iter++->first; });
-//            return result;
             return data_.size();
         }
         size_t count_edge() const
@@ -75,6 +72,24 @@ namespace graph
                     reverse_digraph.add_edge(edge.to(), edge.from(), edge.weight());
             }
             return reverse_digraph;
+        }
+        size_t index(const vertex& vert) const
+        {
+            return std::distance(data_.cbegin(), data_.find(vert));
+        }
+        std::vector<vertex> vertexes() const
+        {
+            std::vector<vertex> result; result.reserve(data_.size());
+            std::generate_n(std::back_inserter(result), data_.size(),
+                [iter = data_.cbegin()]() mutable { return iter++->first; });
+            return result;
+        }
+        std::vector<edge> edges() const
+        {
+            std::vector<edge> result; result.reserve(data_.size() * 2);
+            for (const auto& pair : data_)
+                std::copy(pair.second.cbegin(), pair.second.cend(), std::back_inserter(result));
+            return result;
         }
         std::vector<vertex> reachable(const std::vector<vertex>& source) const
         {

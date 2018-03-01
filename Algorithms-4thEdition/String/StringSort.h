@@ -44,7 +44,6 @@ namespace string
         }
         static void three_way_quick_sort(std::vector<std::string>& strvec)
         {
-            const auto min_char = std::numeric_limits<char>::min();
             using iterator = std::remove_reference_t<decltype(strvec)>::iterator;
             std::function<void(iterator itbeg, iterator itend, size_t)> sort;
             sort = [&](iterator itbeg, iterator itend, size_t index = 0)
@@ -53,10 +52,15 @@ namespace string
                 auto iter_equal = itbeg;
                 auto iter_raw = std::next(iter_equal);
                 auto iter_raw_end = itend;
+                const auto char_compare = [](const iterator& itl, const iterator& itr, size_t index) 
+                { 
+                    const auto char_min = std::numeric_limits<char>::min();;
+                    return (index < itl->size() ? itl->at(index) : char_min) < (index < itr->size() ? itr->at(index) : char_min);
+                };
                 while (std::distance(iter_raw, iter_raw_end) > 0)
                 {
-                    if (*iter_raw < *iter_equal) std::iter_swap(iter_raw++, iter_equal++);
-                    else if (*iter_raw > *iter_equal) std::iter_swap(iter_raw, --iter_raw_end);
+                    if (char_compare(iter_raw, iter_equal, index)) std::iter_swap(iter_raw++, iter_equal++);
+                    else if (char_compare(iter_equal, iter_raw, index)) std::iter_swap(iter_raw, --iter_raw_end);
                     else ++iter_raw;
                 }
                 assert(iter_raw == iter_raw_end);
