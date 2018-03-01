@@ -25,12 +25,13 @@ namespace graph
             edge(const Vertex& from, const Vertex& to, const double weight)
                 : from_(from), to_(to), weight_(weight)
             {}
-            Vertex from() const { return from_; }
+            edge() = default;
+            const Vertex& from() const { return from_; }
             void from(const Vertex& v) { from_ = v; }
-            Vertex to() const { return to_; }
+            const Vertex& to() const { return to_; }
             void to(const Vertex& v) { to_ = v; }
-            double weight() const { return  weight_; }
-            void weight(const int w) { weight_ = w; }
+            const double& weight() const { return  weight_; }
+            void weight(const double w) { weight_ = w; }
             bool operator<(const edge& r) const { return weight_ < r.weight_; }
             bool operator>(const edge& r) const { return r < *this; }
         };
@@ -49,7 +50,7 @@ namespace graph
                 return sum + std::distance(right.second.cbegin(), right.second.cend());
             });             // std::forward_list without ::size() member function
         }
-        void add_edge(vertex from, vertex to, int weight = 1)
+        void add_edge(vertex from, vertex to, double weight = 1)
         {
             using adjacent_list = typename decltype(data_)::mapped_type;
             if (!data_.count(from))
@@ -58,6 +59,10 @@ namespace graph
                 data_.at(from).emplace_front(std::move(from), to, std::move(weight));
             if (!data_.count(to))
                 data_.emplace(std::move(to), adjacent_list{});
+        }
+        void add_edge(const edge& e)
+        {
+            add_edge(e.from(), e.to(), e.weight());
         }
         const std::forward_list<edge>& adjacency(const vertex& vert) const
         {
