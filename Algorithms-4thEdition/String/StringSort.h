@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <functional>
 #include <cassert>
-
 namespace string
 {
     struct string_sort
