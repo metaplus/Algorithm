@@ -157,6 +157,7 @@
     <ClInclude Include="Sorting\PriorityQueue.h" />
     <ClInclude Include="Sorting\QuickSort.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="String\RegularExpression.h" />
     <ClInclude Include="String\StringSort.h" />
     <ClInclude Include="String\SubstringSearch.h" />
     <ClInclude Include="String\Trie.h" />

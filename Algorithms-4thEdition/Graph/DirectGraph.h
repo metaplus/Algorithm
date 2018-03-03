@@ -181,24 +181,21 @@ namespace graph
             case preorder:
             {
                 std::generate_n(std::back_inserter(result), preorder_queue.size(), [&] {
-                    auto front = std::move(preorder_queue.front());
-                    preorder_queue.pop();
+                    auto front = std::move(preorder_queue.front()); preorder_queue.pop();
                     return front;
                 });
             }
             case postorder:
             {
                 std::generate_n(std::back_inserter(result), postorder_queue.size(), [&] {
-                    auto front = std::move(postorder_queue.front());
-                    postorder_queue.pop();
+                    auto front = std::move(postorder_queue.front()); postorder_queue.pop();
                     return front;
                 });
             }
             case reverse_postorder:
             {
                 std::generate_n(std::back_inserter(result), reverse_posorder_stack.size(), [&] {
-                    auto top = std::move(reverse_posorder_stack.top());
-                    reverse_posorder_stack.pop();
+                    auto top = std::move(reverse_posorder_stack.top()); reverse_posorder_stack.pop();
                     return top;
                 });
             }
