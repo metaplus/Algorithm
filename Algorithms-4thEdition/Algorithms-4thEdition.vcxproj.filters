@@ -72,6 +72,9 @@
     <ClInclude Include="String\RegularExpression.h">
       <Filter>Header Files\String</Filter>
     </ClInclude>
+    <ClInclude Include="String\DataCompression.h">
+      <Filter>Header Files\String</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
