@@ -39,7 +39,7 @@ namespace graph
         std::map<vertex, std::forward_list<edge>> data_;
         mutable std::unique_ptr<std::vector<vertex>> cycle_ = nullptr;
     public:
-        size_t count_vertex() const 
+        size_t count_vertex() const
         {
             return data_.size();
         }
@@ -71,7 +71,7 @@ namespace graph
         digraph reverse() const
         {
             digraph reverse_digraph;
-            for(const auto& pair : data_)
+            for (const auto& pair : data_)
             {
                 for (const auto& edge : pair.second)
                     reverse_digraph.add_edge(edge.to(), edge.from(), edge.weight());
@@ -125,7 +125,7 @@ namespace graph
             std::deque<bool> marked(count_vertex(), false);
             std::deque<bool> on_tree(count_vertex(), false);
             std::function<void(const vertex&)> dfs;
-            dfs=[&](const vertex& vert)
+            dfs = [&](const vertex& vert)
             {
                 if (has_cycle()) return;
                 const auto vertex_iter = data_.find(vert);
@@ -159,19 +159,19 @@ namespace graph
         {
             std::queue<vertex> preorder_queue;
             std::queue<vertex> postorder_queue;
-            std::stack<vertex> reverse_posorder_stack;
+            std::stack<vertex> reverse_postorder_stack;
             std::deque<bool> marked(count_vertex(), false);
             std::function<void(const vertex&)> dfs;
-            dfs=[&](const vertex& vert)
+            dfs = [&](const vertex& vert)
             {
                 const auto vertex_iter = data_.find(vert);
-                const auto vertex_index = std::distance(data_.begin(), vertex_iter);                
+                const auto vertex_index = std::distance(data_.begin(), vertex_iter);
                 if (std::exchange(marked.at(vertex_index), true)) return;
                 preorder_queue.push(vert);
                 for (const auto& adjacent_edge : vertex_iter->second)
                     dfs(adjacent_edge.to());
                 postorder_queue.push(vert);
-                reverse_posorder_stack.push(vert);
+                reverse_postorder_stack.push(vert);
             };
             for (const auto& pair : data_)
                 dfs(pair.first);
@@ -194,22 +194,22 @@ namespace graph
             }
             case reverse_postorder:
             {
-                std::generate_n(std::back_inserter(result), reverse_posorder_stack.size(), [&] {
-                    auto top = std::move(reverse_posorder_stack.top()); reverse_posorder_stack.pop();
+                std::generate_n(std::back_inserter(result), reverse_postorder_stack.size(), [&] {
+                    auto top = std::move(reverse_postorder_stack.top()); reverse_postorder_stack.pop();
                     return top;
                 });
             }
             }
             return result;
         }
-        std::vector<vertex> topological_sort()      //require DirectedAcyclicGraph
+        std::vector<vertex> topological_sort()              //require DirectedAcyclicGraph
         {
             if (!is_directed_acyclic_graph()) throw std::logic_error{ "graph is not DAG, with cycle found" };
             const auto topological_order = order_vertex(reverse_postorder);
             return topological_order;
-        }         
+        }
         bool is_strongly_connected(const vertex& vert0, const vertex& vert1) const  // KosarajuSCC
-        {   
+        {
             const auto reverse_topological_order = reverse().topological_sort();
             std::deque<bool> marked(count_vertex(), false);
             std::vector<size_t> id(count_vertex(), 0);      // cast to bool gains false
@@ -234,4 +234,4 @@ namespace graph
             return id0 && id1 && (id0 == id1);
         }
     };
-}                                                                                                                                                                                                                        
+}
