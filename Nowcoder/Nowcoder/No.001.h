@@ -32,10 +32,12 @@ namespace nowcoder
 {
     struct solution001
     {
-        static int solve(const std::string& str)
+        static size_t solve(const std::string& str)
         {
-            std::string rstr; rstr.reserve(str.size());
-            std::reverse_copy(str.begin(), str.end(), std::back_inserter(rstr));
+            std::string rstr{ str.rbegin(),str.rend() };
+//            std::string rstr; 
+//            rstr.reserve(str.size());
+//            std::reverse_copy(str.begin(), str.end(), std::back_inserter(rstr));
             static int dp[1001][1001]{};
             for (auto i = 0; i != str.size() + 1; ++i)
             {

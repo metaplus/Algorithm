@@ -46,7 +46,7 @@ namespace nowcoder
 {
     struct solution003
     {
-        int combination(int p, int n)
+        size_t combination(size_t p, size_t n)
         {
             if (n == 1 || n == 2)
                 return 1;
@@ -59,7 +59,7 @@ namespace nowcoder
             std::vector<int> diff; diff.reserve(data.size());
             std::adjacent_difference(data.begin(), data.end(), std::back_inserter(diff));
             auto low_diff_iter = std::min_element(diff.begin() + 1, diff.end());
-            auto low_diff_pair = 0;
+            size_t low_diff_pair = 0;
             if (*low_diff_iter != 0)
                 low_diff_pair = std::count(diff.begin() + 1, diff.end(), *low_diff_iter);
             else
@@ -78,7 +78,7 @@ namespace nowcoder
                 if (zcount != 0)
                     low_diff_pair += combination(2, zcount + 1);
             }
-            auto high_diff_pair = 0;
+            size_t high_diff_pair = 0;
             if (data.front() != data.back()) {
                 auto min_count = std::upper_bound(data.begin(), data.end(), data.front()) - data.begin();
                 auto max_count = std::upper_bound(data.rbegin(), data.rend(), data.back(), std::greater<int>{}) - data.rbegin();
