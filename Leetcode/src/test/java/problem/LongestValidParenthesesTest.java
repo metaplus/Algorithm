@@ -4,7 +4,7 @@ import base.AlgorithmTestBase;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LongestValidParenthesesTest extends AlgorithmTestBase<LongestValidParentheses> {
 
@@ -22,5 +22,6 @@ class LongestValidParenthesesTest extends AlgorithmTestBase<LongestValidParenthe
     })
     void solve(String str, int expect) {
         assertEquals(algorithm.solve(str), expect);
+        assertEquals(algorithm.solve2(str), expect);
     }
 }
