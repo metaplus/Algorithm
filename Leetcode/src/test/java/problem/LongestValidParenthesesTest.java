@@ -8,11 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LongestValidParenthesesTest extends AlgorithmTestBase<LongestValidParentheses> {
 
-    @Override
-    public LongestValidParentheses get() {
-        return new LongestValidParentheses();
-    }
-
     @ParameterizedTest(name = CASE_NAME)
     @CsvSource({
             "((), 2",

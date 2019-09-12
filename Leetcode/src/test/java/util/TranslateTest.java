@@ -3,8 +3,7 @@ package util;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class TranslateTest {
 
@@ -21,5 +20,4 @@ class TranslateTest {
         assertArrayEquals(grid[1], new int[] {0, 1, 0});
         assertArrayEquals(grid[2], new int[] {0, 0, 0});
     }
-
 }

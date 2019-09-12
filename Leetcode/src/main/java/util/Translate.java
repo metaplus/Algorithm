@@ -18,7 +18,7 @@ public class Translate {
                     .filter(str -> Objects.nonNull(str) && !str.isEmpty())
                     .mapToInt(Integer::valueOf));
         }
-        int grid[][] = new int[groupList.size()][];
+        int[][] grid = new int[groupList.size()][];
         ListIterator<IntStream> iterator = groupList.listIterator();
         while (iterator.hasNext()) {
             grid[iterator.nextIndex()] = iterator.next().toArray();
