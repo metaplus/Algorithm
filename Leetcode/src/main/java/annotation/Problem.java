@@ -15,9 +15,9 @@ public @interface Problem {
 
     int index();
 
-    Class<?> solution();
+    Class<?> solution() default Object.class;
 
     String description() default "";
 
-    String category() default "";
+    String title() default "";
 }

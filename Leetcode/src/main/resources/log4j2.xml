@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Properties>
+        <Property name="message.pattern">%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+        <Property name="file.directory">target/logs</Property>
+        <Property name="file.suffix.date">date${date:yyyyMMdd}</Property>
+        <Property name="file.suffix.time">date${date:yyyyMMdd}.time${date:HHmmss}</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${message.pattern}"/>
+        </Console>
+        <File name="File" fileName="${file.directory}/test.${file.suffix.date}.log">
+            <PatternLayout pattern="${message.pattern}"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
