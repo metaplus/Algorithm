@@ -301,3 +301,4 @@ __pycache__/
 *.class
 
 .DS_Store
+.mvn/
