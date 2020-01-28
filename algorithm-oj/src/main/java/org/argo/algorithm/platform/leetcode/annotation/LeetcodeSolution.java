@@ -1,12 +1,13 @@
 package org.argo.algorithm.platform.leetcode.annotation;
 
+import org.springframework.stereotype.Component;
 
 import java.lang.annotation.*;
 
+@Component
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@Inherited
 @Documented
-public @interface Index {
-    long value();
+public @interface LeetcodeSolution {
+    long order();
 }
