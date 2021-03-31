@@ -15,7 +15,7 @@
     <junit.bom.version>5.5.2</junit.bom.version>
     <reactor.core.version>3.2.12.RELEASE</reactor.core.version>
     <reactor.extra.version>3.2.3.RELEASE</reactor.extra.version>
-    <guava.version>28.1-jre</guava.version>
+    <guava.version>29.0-jre</guava.version>
   </properties>
 
   <dependencyManagement>
