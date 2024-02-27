@@ -20,9 +20,4 @@ class UniquePathsIITest extends AlgorithmTestBase<UniquePathsII> {
     void solve(@ConvertWith(GridConverter.class) int[][] grid) {
         assertEquals(algorithm.solve(grid), 2);
     }
-
-    @Test
-    void ttest() {
-
-    }
 }
