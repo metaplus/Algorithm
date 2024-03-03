@@ -15,7 +15,7 @@
     <junit.bom.version>5.5.2</junit.bom.version>
     <reactor.core.version>3.2.12.RELEASE</reactor.core.version>
     <reactor.extra.version>3.2.3.RELEASE</reactor.extra.version>
-    <guava.version>31.0.1-jre</guava.version>
+    <guava.version>33.0.0-jre</guava.version>
   </properties>
 
   <dependencyManagement>
@@ -49,7 +49,7 @@
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
-      <version>3.12.0</version>
+      <version>3.14.0</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
     <dependency>
@@ -61,7 +61,7 @@
     <dependency>
       <groupId>org.jetbrains</groupId>
       <artifactId>annotations</artifactId>
-      <version>23.0.0</version>
+      <version>24.1.0</version>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
