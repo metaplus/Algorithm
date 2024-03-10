@@ -19,4 +19,22 @@ public class Lc283MoveZeroes {
             }
         }
     }
+
+    public void moveZeroes2(int[] nums) {
+        int left = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                swap(nums, i, left);
+                left++;
+            }
+        }
+    }
+
+    private void swap(int[] nums, int i, int j) {
+        if (i != j) {
+            int val = nums[i];
+            nums[i] = nums[j];
+            nums[j] = val;
+        }
+    }
 }
