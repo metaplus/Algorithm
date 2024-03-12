@@ -1,4 +1,4 @@
-package problem;
+package problem.array;
 
 import annotation.Problem;
 
@@ -14,7 +14,7 @@ import annotation.Problem;
                 "\n" +
                 "You may assume all the characters consist of printable ascii characters.")
 
-public class ReverseString {
+public class Lc344ReverseString {
     public void reverseString(char[] s) {
         if (s == null || s.length <= 1) {
             return;

@@ -5,6 +5,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import problem.array.Lc344ReverseString;
 
 import java.util.stream.Stream;
 
@@ -14,9 +15,9 @@ import static org.junit.jupiter.api.Assertions.*;
  * @Author: Jingxing Xu
  * @Date: 2019/9/14 18:01
  */
-class ReverseStringTest extends AlgorithmTestBase<ReverseString> {
+class Lc344ReverseStringTest extends AlgorithmTestBase<Lc344ReverseString> {
 
-    private final Logger logger = LoggerFactory.getLogger(ReverseStringTest.class);
+    private final Logger logger = LoggerFactory.getLogger(Lc344ReverseStringTest.class);
 
     @Test
     void reverseString() {
