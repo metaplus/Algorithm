@@ -41,4 +41,22 @@ public class ListNode {
         }
         return joiner.toString();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ListNode node = (ListNode) o;
+
+        if (val != node.val) return false;
+        return Objects.equals(next, node.next);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = val;
+        result = 31 * result + (next != null ? next.hashCode() : 0);
+        return result;
+    }
 }

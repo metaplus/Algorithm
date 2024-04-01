@@ -2,6 +2,9 @@ package problem.array.parse;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class ArrayParseTest {
@@ -24,5 +27,11 @@ class ArrayParseTest {
     void parseIntArray() {
         int[] ints = ArrayParse.parseIntArray("[3,0]");
         assertNotNull(ints);
+    }
+
+    @Test
+    void parse2DIntList() {
+        List<List<Integer>> lists = ArrayParse.parse2DIntList("[[1,1],[1,1]]");
+        assertEquals(2, lists.size());
     }
 }

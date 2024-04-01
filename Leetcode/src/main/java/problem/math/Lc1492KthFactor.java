@@ -1,0 +1,16 @@
+package problem.math;
+
+public class Lc1492KthFactor {
+
+    public int kthFactor(int n, int k) {
+        int count = 0;
+        for (int i = 1; i <= n; i++) {
+            if (n % i == 0) {
+                if (++count == k) {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+}

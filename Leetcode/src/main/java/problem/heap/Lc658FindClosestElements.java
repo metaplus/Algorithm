@@ -1,13 +1,11 @@
-package problem.array;
+package problem.heap;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
+import java.util.*;
 
 public class Lc658FindClosestElements {
 
-    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+
+    public List<Integer> findClosestElements2(int[] arr, int k, int x) {
         if (x <= arr[0]) {
             List<Integer> list = new ArrayList<>(k);
             for (int i = 0; i < k; i++) {
@@ -59,5 +57,59 @@ public class Lc658FindClosestElements {
             list.add(arr[id]);
         }
         return list;
+    }
+
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        PriorityQueue<Cell> queue = new PriorityQueue<>(k + 1, (a, b) -> {
+            if (a.gap != b.gap) {
+                return b.gap - a.gap;
+            }
+            return b.index - a.index;
+        });
+        int last = 0;
+        for (int i = 0; i < arr.length; i++) {
+            int gap = Math.abs(arr[i] - x);
+            if (queue.size() < k) {
+                queue.add(new Cell(i, arr[i], gap));
+                last = i;
+                continue;
+            }
+            if (gap >= queue.peek().gap) {
+                if (arr[i] > x) {
+                    break;
+                }
+                continue;
+            }
+            queue.remove();
+            queue.add(new Cell(i, arr[i], gap));
+            last = i;
+        }
+        List<Integer> res = new ArrayList<>(k);
+        for (int i = last - k + 1; i <= last; i++) {
+            res.add(arr[i]);
+        }
+        return res;
+    }
+
+    private class Cell {
+
+        private int index;
+        private int val;
+        private int gap;
+
+        public Cell(int index, int val, int gap) {
+            this.index = index;
+            this.val = val;
+            this.gap = gap;
+        }
+
+        @Override
+        public String toString() {
+            return "Cell{" +
+                    "index=" + index +
+                    ", val=" + val +
+                    ", gap=" + gap +
+                    '}';
+        }
     }
 }
