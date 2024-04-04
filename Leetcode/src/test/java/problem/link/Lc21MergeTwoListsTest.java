@@ -8,8 +8,8 @@ class Lc21MergeTwoListsTest {
     @Test
     void mergeTwoLists() {
         new Lc21MergeTwoLists().mergeTwoLists(
-                ListNode.parseText("[1,2,4]"),
-                ListNode.parseText("[1,3,4]")
+                ListNode.parse("[1,2,4]"),
+                ListNode.parse("[1,3,4]")
         );
     }
 }

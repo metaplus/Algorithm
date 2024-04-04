@@ -1,5 +1,7 @@
 package problem.link;
 
+import problem.link.node.ListNode;
+
 import java.util.Objects;
 
 public class Lc142DetectCycle {
@@ -26,14 +28,6 @@ public class Lc142DetectCycle {
         return node;
     }
 
-    class ListNode {
-        int val;
-        ListNode next;
 
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
-    }
 
 }

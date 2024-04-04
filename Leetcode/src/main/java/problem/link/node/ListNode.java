@@ -1,6 +1,7 @@
 package problem.link.node;
 
 import org.apache.commons.lang3.StringUtils;
+import problem.array.parse.ArrayParse;
 
 import java.util.Objects;
 import java.util.StringJoiner;
@@ -22,13 +23,26 @@ public class ListNode {
         this.next = next;
     }
 
-    public static ListNode parseText(String text) {
+    public static ListNode parse(String text) {
         String[] tokens = StringUtils.split(StringUtils.strip(text, "[]"), ',');
         ListNode node = null;
         for (int i = tokens.length - 1; i >= 0; i--) {
             node = new ListNode(Integer.parseInt(tokens[i]), node);
         }
         return node;
+    }
+
+    public static ListNode[] parse2Dim(String text) {
+        int[][] array = ArrayParse.parse2DIntArray(text);
+        ListNode[] nodes = new ListNode[array.length];
+        for (int i = 0; i < array.length; i++) {
+            ListNode node = null;
+            for (int j = array[i].length - 1; j >= 0; j--) {
+                node = new ListNode(array[i][j], node);
+            }
+            nodes[i] = node;
+        }
+        return nodes;
     }
 
     @Override

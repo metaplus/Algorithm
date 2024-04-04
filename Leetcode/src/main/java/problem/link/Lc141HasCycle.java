@@ -1,5 +1,7 @@
 package problem.link;
 
+import problem.link.node.ListNode;
+
 import java.util.Objects;
 
 public class Lc141HasCycle {
@@ -24,14 +26,6 @@ public class Lc141HasCycle {
         return false;
     }
 
-    class ListNode {
-        int val;
-        ListNode next;
 
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
-    }
 
 }

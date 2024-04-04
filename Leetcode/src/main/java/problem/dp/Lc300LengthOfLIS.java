@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class Lc300LengthOfLIS {
 
+
     public int lengthOfLIS(int[] nums) {
         int[] dp = new int[nums.length];
         Arrays.fill(dp, 1);

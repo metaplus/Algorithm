@@ -1,6 +1,7 @@
 package problem;
 
 import org.junit.jupiter.api.Test;
+import problem.array.Lc299GetHint;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

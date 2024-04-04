@@ -1,6 +1,7 @@
 package problem;
 
 import org.junit.jupiter.api.Test;
+import problem.hashmap.Lc146LRUCache;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

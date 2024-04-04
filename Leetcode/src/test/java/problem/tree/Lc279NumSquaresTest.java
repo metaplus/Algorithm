@@ -9,6 +9,7 @@ class Lc279NumSquaresTest {
 
     @Test
     void numSquares() {
+        assertEquals(1, new Lc279NumSquares().numSquares(1));
         assertEquals(3, new Lc279NumSquares().numSquares(43));
     }
 }

@@ -41,4 +41,33 @@ public class TreeNode {
         }
         return nodes[0];
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        TreeNode node = (TreeNode) o;
+
+        if (val != node.val) return false;
+        if (!Objects.equals(left, node.left)) return false;
+        return Objects.equals(right, node.right);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = val;
+        result = 31 * result + (left != null ? left.hashCode() : 0);
+        result = 31 * result + (right != null ? right.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "TreeNode{" +
+                "val=" + val +
+                ", left=" + left +
+                ", right=" + right +
+                '}';
+    }
 }

@@ -7,6 +7,6 @@ class Lc61RotateRightTest {
 
     @Test
     void rotateRight() {
-        new Lc61RotateRight().rotateRight(ListNode.parseText("1,2,3,4,5"), 2);
+        new Lc61RotateRight().rotateRight(ListNode.parse("1,2,3,4,5"), 2);
     }
 }

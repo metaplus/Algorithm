@@ -1,10 +1,57 @@
 package problem.array;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 public class Lc76MinWindow {
+
+    public String minWindow(String s, String t) {
+        int[] counts = new int[128];
+        int[] countsT = new int[128];
+        int charT = 0;
+        for (char c : t.toCharArray()) {
+            if (countsT[c]++ == 0) {
+                charT++;
+            }
+        }
+        int[] window = new int[2];
+        Arrays.fill(window, -1);
+        char[] chars = s.toCharArray();
+        int lenMax = Integer.MAX_VALUE;
+        int charS = 0;
+        int left = 0;
+        for (int i = 0; i < chars.length; i++) {
+            if (++counts[chars[i]] < countsT[chars[i]]) {
+                continue;
+            }
+            if (counts[chars[i]] == countsT[chars[i]]) {
+                if (++charS == charT) {
+                    int len = i - left + 1;
+                    if (len < lenMax) {
+                        lenMax = len;
+                        window[0] = left;
+                        window[1] = i;
+                    }
+                }
+                continue;
+            }
+            while (left < s.length() && counts[chars[left]] > countsT[chars[left]] && left <= i) {
+                --counts[chars[left]];
+                left++;
+            }
+            if (charS == charT) {
+                int len = i - left + 1;
+                if (len < lenMax) {
+                    lenMax = len;
+                    window[0] = left;
+                    window[1] = i;
+                }
+            }
+        }
+        return window[1] >= 0 ? s.substring(window[0], window[1] + 1) : "";
+    }
 
 
     private boolean satisfyWindow(Map<Character, Integer> countWin, Map<Character, Integer> mapT) {
@@ -19,7 +66,7 @@ public class Lc76MinWindow {
         return true;
     }
 
-    public String minWindow(String s, String t) {
+    public String minWindow2(String s, String t) {
         if (s.length() < t.length()) {
             return "";
         }

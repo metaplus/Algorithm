@@ -1,0 +1,82 @@
+package problem.search;
+
+public class Lc4FindMedianSortedArrays {
+
+    // fail
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        if (nums1.length == 0) {
+            if (nums2.length % 2 == 1) {
+                return nums2[nums2.length / 2];
+            }
+            return ((double) nums2[nums2.length / 2 - 1] + nums2[nums2.length / 2]) / 2;
+        }
+        if (nums2.length == 0) {
+            if (nums1.length % 2 == 1) {
+                return nums1[nums1.length / 2];
+            }
+            return ((double) nums1[nums1.length / 2 - 1] + nums1[nums1.length / 2]) / 2;
+        }
+        int left = Math.min(nums1[0], nums2[0]);
+        int right = Math.max(nums1[nums1.length - 1], nums2[nums2.length - 1]);
+        double result = ((double) left + right) / 2;
+        while (left < right) {
+            double mid = ((double) left + right) / 2;
+            int less1 = countLess(nums1, mid);
+            int less2 = countLess(nums2, mid);
+            int great1 = countGreater(nums1, mid);
+            int great2 = countGreater(nums2, mid);
+            if (less1 + less2 == great1 + great2) {
+                return mid;
+            } else if (less1 + less2 < great1 + great2) {
+//                left = (int) mid + 1;
+                left++;
+            } else {
+                result = mid;
+//                right = (int) Math.floor(mid);
+                right--;
+            }
+        }
+//        return ((double) left + right) / 2;
+        return left;
+    }
+
+    private int countLess(int[] nums, double value) {
+        if (nums[nums.length - 1] < value) {
+            return nums.length;
+        }
+        if (nums[0] > value) {
+            return 0;
+        }
+        int left = 0;
+        int right = nums.length;
+        while (left < right) {
+            int mid = (left + right) / 2;
+            if (nums[mid] < value) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+        return left;
+    }
+
+    private int countGreater(int[] nums, double value) {
+        if (nums[0] > value) {
+            return nums.length;
+        }
+        if (nums[nums.length - 1] < value) {
+            return 0;
+        }
+        int left = 0;
+        int right = nums.length;
+        while (left < right) {
+            int mid = (left + right) / 2;
+            if (nums[mid] <= value) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+        return nums.length - left;
+    }
+}

@@ -7,6 +7,6 @@ class Lc82DeleteDuplicatesTest {
 
     @Test
     void deleteDuplicates() {
-        new Lc82DeleteDuplicates().deleteDuplicates(ListNode.parseText("[1,1,1,2,3]"));
+        new Lc82DeleteDuplicates().deleteDuplicates(ListNode.parse("[1,1,1,2,3]"));
     }
 }

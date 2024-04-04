@@ -9,9 +9,9 @@ class Lc143ReorderListTest extends Assertions {
     @Test
     void reorderList() {
         {
-            ListNode node = ListNode.parseText("[1,2,3,4]");
+            ListNode node = ListNode.parse("[1,2,3,4]");
             new Lc143ReorderList().reorderList(node);
-            assertEquals(ListNode.parseText("[1,4,2,3]"), node);
+            assertEquals(ListNode.parse("[1,4,2,3]"), node);
         }
     }
 }

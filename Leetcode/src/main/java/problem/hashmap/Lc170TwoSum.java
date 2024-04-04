@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Lc170TwoSum {
 
- public   static class TwoSum {
+    public static class TwoSum {
 
         Map<Integer, Integer> map = new HashMap<>();
 

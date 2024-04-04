@@ -4,7 +4,44 @@ import java.util.*;
 
 public class Lc323CountComponents {
 
+
     public int countComponents(int n, int[][] edges) {
+        int[] roots = new int[n];
+        int[] ranks = new int[n];
+        Arrays.setAll(roots, i -> i);
+        for (int[] edge : edges) {
+            int root0 = findRoot(roots, edge[0]);
+            int root1 = findRoot(roots, edge[1]);
+            if (root0 != root1) {
+                if (ranks[root0] > ranks[root1]) {
+                    roots[root1] = root0;
+                    continue;
+                }
+                if (ranks[root1] > ranks[root0]) {
+                    roots[root0] = root1;
+                    continue;
+                }
+                roots[root0] = root1;
+                ranks[root1]++;
+            }
+        }
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < n; i++) {
+            set.add(findRoot(roots, i));
+        }
+        return set.size();
+    }
+
+
+    int findRoot(int[] roots, int i) {
+        while (roots[i] != i) {
+            i = roots[i];
+        }
+        return roots[i];
+    }
+
+
+    public int countComponents2(int n, int[][] edges) {
         int comp = 0;
         List<Integer>[] adg = new List[n];
         for (int[] edge : edges) {

@@ -1,6 +1,7 @@
 package problem;
 
 import org.junit.jupiter.api.Test;
+import problem.math.Lc1093SampleStats;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 

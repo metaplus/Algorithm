@@ -9,11 +9,11 @@ class Lc92ReverseBetweenTest {
 
     @Test
     void reverseBetween() {
-        assertEquals(ListNode.parseText("[5,3]"), new Lc92ReverseBetween().reverseBetween(
-                ListNode.parseText("[3,5]"), 1, 2));
-        assertEquals(ListNode.parseText("[5]"), new Lc92ReverseBetween().reverseBetween(
-                ListNode.parseText("[5]"), 1, 1));
-        assertEquals(ListNode.parseText("[1,4,3,2,5]"), new Lc92ReverseBetween().reverseBetween(
-                ListNode.parseText("[1,2,3,4,5]"), 2, 4));
+        assertEquals(ListNode.parse("[5,3]"), new Lc92ReverseBetween().reverseBetween(
+                ListNode.parse("[3,5]"), 1, 2));
+        assertEquals(ListNode.parse("[5]"), new Lc92ReverseBetween().reverseBetween(
+                ListNode.parse("[5]"), 1, 1));
+        assertEquals(ListNode.parse("[1,4,3,2,5]"), new Lc92ReverseBetween().reverseBetween(
+                ListNode.parse("[1,2,3,4,5]"), 2, 4));
     }
 }

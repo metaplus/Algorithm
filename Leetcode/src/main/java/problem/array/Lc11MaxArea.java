@@ -2,7 +2,6 @@ package problem.array;
 
 public class Lc11MaxArea {
 
-
     public int maxArea(int[] height) {
         int areaMax = 0;
         for (int left = 0, right = height.length - 1; left < right; ) {
@@ -11,7 +10,7 @@ public class Lc11MaxArea {
             if (left + 1 == right) {
                 break;
             }
-            if (height[left] <   height[right ]) {
+            if (height[left] < height[right]) {
                 left++;
                 continue;
             }

@@ -8,7 +8,7 @@ class Lc234IsPalindromeTest extends Assertions {
 
     @Test
     void isPalindrome() {
-        ListNode node = ListNode.parseText("[1,2,2,1]");
+        ListNode node = ListNode.parse("[1,2,2,1]");
         assertTrue(new Lc234IsPalindrome().isPalindrome(node));
     }
 }

@@ -2,9 +2,11 @@ package problem.array.parse;
 
 import org.apache.commons.lang3.StringUtils;
 import org.eclipse.collections.impl.list.mutable.FastList;
+import org.eclipse.collections.impl.set.mutable.UnifiedSet;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public abstract class ArrayParse {
 
@@ -69,6 +71,25 @@ public abstract class ArrayParse {
         return FastList.newListWith(StringUtils.splitByWholeSeparatorPreserveAllTokens(StringUtils.strip(s1, "\""), "\",\""));
     }
 
+    public static Set<String> parseStringSet(String s) {
+        s = StringUtils.deleteWhitespace(s);
+        String s1 = StringUtils.substringBetween(s, "[", "]");
+        if (StringUtils.isBlank(s1)) {
+            return UnifiedSet.newSet();
+        }
+        return UnifiedSet.newSetWith(StringUtils.splitByWholeSeparatorPreserveAllTokens(StringUtils.strip(s1, "\""), "\",\""));
+    }
+
+
+    public static String[] parseStringArray(String s) {
+        s = StringUtils.deleteWhitespace(s);
+        String s1 = StringUtils.substringBetween(s, "[", "]");
+        if (StringUtils.isBlank(s1)) {
+            return new String[0];
+        }
+        return StringUtils.splitByWholeSeparatorPreserveAllTokens(StringUtils.strip(s1, "\""), "\",\"");
+    }
+
     public static Integer[] parseIntegerArray(String s) {
         s = StringUtils.deleteWhitespace(s);
         String s1 = StringUtils.substringBetween(s, "[", "]");
@@ -104,6 +125,23 @@ public abstract class ArrayParse {
         }
         return array;
     }
+
+    public static List<List<String>> parse2DStringList(String s) {
+        s = StringUtils.deleteWhitespace(s);
+        String s1 = StringUtils.substringBetween(s, "[[", "]]");
+        String[] tokens = StringUtils.splitByWholeSeparator(s1, "],[");
+        List<List<String>> list = new ArrayList<>(tokens.length);
+        for (int i = 0; i < tokens.length; i++) {
+            String[] cols = StringUtils.split(tokens[i], ',');
+            List<String> row = new ArrayList<>(cols.length);
+            for (int j = 0; j < cols.length; j++) {
+                row.add(StringUtils.strip(cols[j], "\""));
+            }
+            list.add(row);
+        }
+        return list;
+    }
+
 
     public static char[][] parse2DCharArray(String s) {
         s = StringUtils.deleteWhitespace(s);
