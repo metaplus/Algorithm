@@ -1,6 +1,7 @@
 package problem.hashmap;
 
 import org.junit.jupiter.api.Test;
+import problem.bit.Lc136SingleNumber;
 
 import static org.junit.jupiter.api.Assertions.*;
 

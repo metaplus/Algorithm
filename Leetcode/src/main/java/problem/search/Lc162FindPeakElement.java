@@ -2,6 +2,7 @@ package problem.search;
 
 public class Lc162FindPeakElement {
 
+
     public int findPeakElement(int[] nums) {
         if (nums.length < 2) {
             return 0;

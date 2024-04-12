@@ -2,6 +2,7 @@ package problem.dp;
 
 import org.junit.jupiter.api.Test;
 import problem.array.parse.ArrayParse;
+import problem.dp.bag.Lc518Change;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

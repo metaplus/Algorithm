@@ -68,7 +68,11 @@ public abstract class ArrayParse {
         if (StringUtils.isBlank(s1)) {
             return FastList.newList();
         }
-        return FastList.newListWith(StringUtils.splitByWholeSeparatorPreserveAllTokens(StringUtils.strip(s1, "\""), "\",\""));
+        if (s1.equals("\"\"")) {
+            return FastList.newListWith("");
+        }
+        String[] tokens = StringUtils.splitByWholeSeparatorPreserveAllTokens(StringUtils.strip(s1, "\""), "\",\"");
+        return FastList.newListWith(tokens);
     }
 
     public static Set<String> parseStringSet(String s) {
@@ -153,6 +157,17 @@ public abstract class ArrayParse {
             for (int j = 0; j < cols.length; j++) {
                 array[i][j] = StringUtils.strip(cols[j], "\"").charAt(0);
             }
+        }
+        return array;
+    }
+
+    public static char[]parseCharArray(String s) {
+        s = StringUtils.deleteWhitespace(s);
+        String s1 = StringUtils.substringBetween(s, "[", "]");
+        String[] tokens = StringUtils.splitByWholeSeparator(s1, "\",\"");
+        char[] array = new char[tokens.length];
+        for (int i = 0; i < tokens.length; i++) {
+            array[i] = StringUtils.strip(tokens[i], "\"").charAt(0);
         }
         return array;
     }

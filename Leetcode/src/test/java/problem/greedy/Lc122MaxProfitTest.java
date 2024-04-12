@@ -1,6 +1,7 @@
 package problem.greedy;
 
 import org.junit.jupiter.api.Test;
+import problem.dp.Lc122MaxProfit;
 
 import static org.junit.jupiter.api.Assertions.*;
 

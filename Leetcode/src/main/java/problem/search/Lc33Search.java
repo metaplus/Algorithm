@@ -34,7 +34,7 @@ public class Lc33Search {
             return left == nums.length || nums[left] != target ? -1 : left;
         }
         left = 0;
-        right = mid;
+        right = mid - 1;
         while (left < right) {
             int mid1 = (left + right) / 2;
             if (nums[mid1] < target) {

@@ -23,6 +23,8 @@ public class TreeNode {
         this.right = right;
     }
 
+
+    //todo:bfs
     public static TreeNode parse(String text) {
         Integer[] array = ArrayParse.parseIntegerArray(text);
         TreeNode[] nodes = new TreeNode[array.length];

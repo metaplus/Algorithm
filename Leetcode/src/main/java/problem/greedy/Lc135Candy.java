@@ -4,6 +4,50 @@ import java.util.Arrays;
 
 public class Lc135Candy {
     public int candy(int[] ratings) {
+        if (ratings.length < 2) {
+            return 1;
+        }
+        int[] candy = new int[ratings.length];
+        int left = -1;
+        for (int i = 1; i < ratings.length; i++) {
+            if (ratings[i] > ratings[i - 1]) {
+                if (left < 0) {
+                    left = i - 1;
+                    candy[i - 1] = 1;
+                    candy[i] = 2;
+                } else {
+                    candy[i] = candy[i - 1] + 1;
+                }
+                continue;
+            }
+            left = -1;
+        }
+        int right = -1;
+        for (int i = ratings.length - 2; i >= 0; i--) {
+            if (ratings[i] > ratings[i + 1]) {
+                if (right < 0) {
+                    right = i + 1;
+                    candy[i] = Math.max(candy[i], 2);
+                    candy[i + 1] = 1;
+                } else {
+                    candy[i] = Math.max(candy[i], candy[i + 1] + 1);
+                }
+                continue;
+            }
+            right = -1;
+        }
+        int sum = 0;
+        for (int i = 0; i < candy.length; i++) {
+            if (candy[i] == 0) {
+                sum += 1;
+                continue;
+            }
+            sum += candy[i];
+        }
+        return sum;
+    }
+
+    public int candy2(int[] ratings) {
         int[] indices = radixSort(ratings, new int[ratings.length]);
         int[] candies = new int[ratings.length];
         int candy = 0;

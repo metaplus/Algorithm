@@ -3,6 +3,20 @@ package problem.search;
 public class Lc153FindMin {
 
     public int findMin(int[] nums) {
+        int left = 0;
+        int right = nums.length - 1;
+        while (left < right) {
+            int mid = (left + right) / 2;
+            if (nums[mid] > nums[right]) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+        return nums[left];
+    }
+
+    public int findMin2(int[] nums) {
         int min = nums[0];
         int left = 0;
         int right = nums.length - 1;

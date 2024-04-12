@@ -7,6 +7,24 @@ import java.util.*;
 public class Lc101IsSymmetric {
 
     public boolean isSymmetric(TreeNode root) {
+        return dfs(root, root);
+    }
+
+
+    public boolean dfs(TreeNode left, TreeNode right) {
+        if (Objects.isNull(left) && Objects.isNull(right)) {
+            return true;
+        }
+        if (Objects.isNull(left) || Objects.isNull(right)) {
+            return false;
+        }
+        if (left.val != right.val) {
+            return false;
+        }
+        return dfs(left.left, right.right) && dfs(left.right, right.left);
+    }
+
+    public boolean isSymmetric2(TreeNode root) {
         TreeNode nil = new TreeNode(-200);
         Deque<TreeNode> deque = new ArrayDeque<>();
         deque.add(root);

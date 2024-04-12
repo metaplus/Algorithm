@@ -1,7 +1,7 @@
 package problem.greedy;
 
 import org.junit.jupiter.api.Test;
-import problem.deque.Lc56Merge;
+import problem.deque.range.Lc56Merge;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,10 +1,38 @@
 package problem.hashmap;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class Lc205IsIsomorphic {
 
     public boolean isIsomorphic(String s, String t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+        char[] map = new char[128];
+        boolean[] source = new boolean[128];
+        boolean[] target = new boolean[128];
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            char d = t.charAt(i);
+            if (!source[c]) {
+                if (target[d]) {
+                    return false;
+                }
+                map[c] = d;
+                source[c] = true;
+                target[d] = true;
+                continue;
+            }
+            if (map[c] != d) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean isIsomorphic2(String s, String t) {
         Map<Character, Integer> count1 = new HashMap<>();
         Map<Character, Integer> count2 = new HashMap<>();
         for (int i = 0; i < s.length(); i++) {

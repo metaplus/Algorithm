@@ -1,12 +1,42 @@
 package problem.pointer;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Lc30FindSubstring {
 
+
+    // time long
     public List<Integer> findSubstring(String s, String[] words) {
+        Map<String, Integer> map = new HashMap<>(words.length);
+        for (String word : words) {
+            map.merge(word, 1, Integer::sum);
+        }
+        int len = words.length * words[0].length();
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i <= s.length() - len; i++) {
+            if (dfs(s, i, words[0].length(), map)) {
+                result.add(i);
+            }
+        }
+        return result;
+    }
+
+    private boolean dfs(String s, int i, int len, Map<String, Integer> map) {
+        if (map.isEmpty()) {
+            return true;
+        }
+        String str = s.substring(i, i + len);
+        if (!map.containsKey(str)) {
+            return false;
+        }
+        map.compute(str, (k, v) -> v == 1 ? null : v - 1);
+        boolean result = dfs(s, i + len, len, map);
+        map.merge(str, 1, Integer::sum);
+        return result;
+    }
+
+    // tle
+    public List<Integer> findSubstring2(String s, String[] words) {
         char[] chars = s.toCharArray();
         char[][] wordArr = new char[words.length][];
         for (int i = 0; i < words.length; i++) {
@@ -25,7 +55,6 @@ public class Lc30FindSubstring {
     }
 
 
-    //timeout
     private boolean check(char[] chars, int i, char[][] wordArr, boolean[] visit) {
         int count = 0;
         int len = wordArr[0].length;
