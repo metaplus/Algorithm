@@ -1,4 +1,4 @@
-package problem.dp;
+package problem.dp.state;
 
 public class Lc256MinCost {
 

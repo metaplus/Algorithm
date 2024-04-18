@@ -1,4 +1,4 @@
-package problem.search;
+package problem.search.binary;
 
 public class Lc35SearchInsert {
 

@@ -20,6 +20,7 @@ public class Lc11MaxArea {
 //            }
             right--;
         }
+
         return areaMax;
     }
 
