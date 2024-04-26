@@ -1,4 +1,4 @@
-package problem.matrix;
+package problem.array.matrix;
 
 public class Lc240SearchMatrix {
 

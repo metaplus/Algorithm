@@ -6,17 +6,30 @@ import java.util.Objects;
 
 public class Lc98IsValidBST {
 
-
     public boolean isValidBST(TreeNode root) {
-        return !dfs(root).fail;
+        return dfs(root, Long.MIN_VALUE, Long.MAX_VALUE);
     }
 
-    public Cell dfs(TreeNode node) {
+    public boolean dfs(TreeNode node, long low, long up) {
+        if (Objects.isNull(node)) {
+            return true;
+        }
+        if (node.val <= low || node.val >= up) {
+            return false;
+        }
+        return dfs(node.left, low, node.val) && dfs(node.right, node.val,up );
+    }
+
+    public boolean isValidBST2(TreeNode root) {
+        return !dfs2(root).fail;
+    }
+
+    public Cell dfs2(TreeNode node) {
         if (Objects.isNull(node)) {
             return null;
         }
-        Cell left = dfs(node.left);
-        Cell right = dfs(node.right);
+        Cell left = dfs2(node.left);
+        Cell right = dfs2(node.right);
         if (Objects.isNull(left)) {
             if (Objects.isNull(right)) {
                 return new Cell(node.val, node.val, false);

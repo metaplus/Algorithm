@@ -1,4 +1,4 @@
-package problem.search;
+package problem.search.binary;
 
 public class Lc274HIndex {
 //    public int hIndex(int[] citations) {

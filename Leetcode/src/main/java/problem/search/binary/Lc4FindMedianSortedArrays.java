@@ -1,9 +1,64 @@
-package problem.search;
+package problem.search.binary;
 
 public class Lc4FindMedianSortedArrays {
 
-    // fail
+
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        if (nums1.length == 0 || nums2.length == 0) {
+            int[] nums = nums1.length == 0 ? nums2 : nums1;
+            int len = nums1.length == 0 ? nums2.length : nums1.length;
+            if (len % 2 == 1) {
+                return nums[len / 2];
+            }
+            return ((double) nums[len / 2 - 1] + nums[len / 2]) / 2;
+        }
+        int total = nums1.length + nums2.length;
+        int left = Math.min(nums1[0], nums2[0]);
+        int right = Math.max(nums1[nums1.length - 1], nums2[nums2.length - 1]);
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            int less1 = searchLessEqual(nums1, mid);
+            int less2 = searchLessEqual(nums2, mid);
+            if (less1 + less2 < total - less1 - less2) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+        if (total % 2 == 1) {
+            return left;
+        }
+        int half = left;
+        right = Math.max(nums1[nums1.length - 1], nums2[nums2.length - 1]);
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            int less1 = searchLessEqual(nums1, mid);
+            int less2 = searchLessEqual(nums2, mid);
+            if (less1 + less2 < total - less1 - less2 + 2) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+        return ((double) half + left) / 2;
+    }
+
+    public int searchLessEqual(int[] arr, int val) {
+        int left = -1;
+        int right = arr.length - 1;
+        while (left < right) {
+            int mid = left + (right - left + 1) / 2;
+            if (arr[mid] > val) {
+                right = mid - 1;
+            } else {
+                left = mid;
+            }
+        }
+        return left + 1;
+    }
+
+    // fail
+    public double findMedianSortedArrays2(int[] nums1, int[] nums2) {
         if (nums1.length == 0) {
             if (nums2.length % 2 == 1) {
                 return nums2[nums2.length / 2];

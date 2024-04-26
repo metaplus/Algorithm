@@ -37,7 +37,7 @@ public class Lc76MinWindow {
                 }
                 continue;
             }
-            while (left < s.length() && counts[chars[left]] > countsT[chars[left]] && left <= i) {
+            while (left <= i && counts[chars[left]] > countsT[chars[left]]) {
                 --counts[chars[left]];
                 left++;
             }

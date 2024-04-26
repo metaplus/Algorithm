@@ -2,6 +2,7 @@ package problem.search;
 
 import org.junit.jupiter.api.Test;
 import problem.array.parse.ArrayParse;
+import problem.search.binary.Lc268MissingNumber;
 
 import static org.junit.jupiter.api.Assertions.*;
 

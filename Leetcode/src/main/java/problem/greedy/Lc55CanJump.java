@@ -3,8 +3,22 @@ package problem.greedy;
 public class Lc55CanJump {
 
 
-    // timeout
     public boolean canJump(int[] nums) {
+        if (nums.length < 2) {
+            return true;
+        }
+        if (nums[0] == 0) {
+            return false;
+        }
+        int right = nums[0];
+        for (int i = 1; i < nums.length && i <= right; i++) {
+            right = Math.max(right, i + nums[i]);
+        }
+        return right >= nums.length - 1;
+    }
+
+    // timeout
+    public boolean canJump3(int[] nums) {
         boolean[][] dp = new boolean[nums.length][nums.length];
         for (int i = 0; i < nums.length; i++) {
             dp[i][i] = true;

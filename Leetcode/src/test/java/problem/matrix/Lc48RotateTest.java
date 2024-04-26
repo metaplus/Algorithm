@@ -1,6 +1,7 @@
 package problem.matrix;
 
 import org.junit.jupiter.api.Test;
+import problem.array.matrix.Lc48Rotate;
 import problem.array.parse.ArrayParse;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;

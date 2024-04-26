@@ -1,6 +1,7 @@
 package problem.dp;
 
 import org.junit.jupiter.api.Test;
+import problem.dp.sequence.Lc72MinDistance;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

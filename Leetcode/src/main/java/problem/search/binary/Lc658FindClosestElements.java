@@ -1,9 +1,42 @@
-package problem.heap;
+package problem.search.binary;
 
 import java.util.*;
 
 public class Lc658FindClosestElements {
 
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        int left = 0;
+        int right = arr.length - 1;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (arr[mid] < x) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+        left--;
+        for (int i = 0; i < k; i++) {
+            if (left < 0) {
+                right++;
+                continue;
+            }
+            if (right > arr.length - 1) {
+                left--;
+                continue;
+            }
+            if (x - arr[left] <= arr[right] - x) {
+                left--;
+                continue;
+            }
+            right++;
+        }
+        List<Integer> result = new ArrayList<>(k);
+        for (int i = left + 1; i < right; i++) {
+            result.add(arr[i]);
+        }
+        return result;
+    }
 
     public List<Integer> findClosestElements2(int[] arr, int k, int x) {
         if (x <= arr[0]) {
@@ -59,7 +92,7 @@ public class Lc658FindClosestElements {
         return list;
     }
 
-    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+    public List<Integer> findClosestElements3(int[] arr, int k, int x) {
         PriorityQueue<Cell> queue = new PriorityQueue<>(k + 1, (a, b) -> {
             if (a.gap != b.gap) {
                 return b.gap - a.gap;
