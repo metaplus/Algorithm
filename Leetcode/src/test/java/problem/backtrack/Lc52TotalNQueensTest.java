@@ -1,6 +1,7 @@
 package problem.backtrack;
 
 import org.junit.jupiter.api.Test;
+import problem.search.dfs.Lc52TotalNQueens;
 
 import static org.junit.jupiter.api.Assertions.*;
 

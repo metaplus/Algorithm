@@ -6,6 +6,31 @@ import java.util.Deque;
 public class Lc221MaximalSquare {
 
     public int maximalSquare(char[][] matrix) {
+        int row = matrix.length;
+        int col = matrix[0].length;
+        int[][] left = new int[row][col];
+        int widthMax = 0;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (matrix[i][j] == '1') {
+                    left[i][j] = j > 0 ? left[i][j - 1] + 1 : 1;
+                }
+            }
+        }
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                int leftMin = left[i][j];
+                for (int k = i; k >= 0 && matrix[k][j] == '1'; k--) {
+                    leftMin = Math.min(leftMin, left[k][j]);
+                    int width = Math.min(leftMin, i - k + 1);
+                    widthMax = Math.max(widthMax, width);
+                }
+            }
+        }
+        return widthMax * widthMax;
+    }
+
+    public int maximalSquare3(char[][] matrix) {
         int rows = matrix.length;
         int cols = matrix[0].length;
         int[][] dp = new int[rows][cols];

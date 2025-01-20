@@ -7,6 +7,23 @@ import java.util.Objects;
 public class Lc538ConvertBST {
 
     public TreeNode convertBST(TreeNode root) {
+        dfs(root, 0);
+        return root;
+    }
+
+    public int dfs(TreeNode root, int pre) {
+        if (Objects.isNull(root)) {
+            return 0;
+        }
+        int right = dfs(root.right, pre);
+        int val=root.val;
+        root.val += right;
+        root.val += pre;
+        int left = dfs(root.left, root.val);
+        return val+ right + left;
+    }
+
+    public TreeNode convertBST2(TreeNode root) {
         dfsGreat(root, 0);
         return root;
     }

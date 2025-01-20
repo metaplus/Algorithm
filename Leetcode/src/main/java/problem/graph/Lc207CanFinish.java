@@ -7,6 +7,46 @@ import java.util.List;
 public class Lc207CanFinish {
 
     public boolean canFinish(int numCourses, int[][] prerequisites) {
+        if (prerequisites.length < 2) {
+            return true;
+        }
+        List<Integer>[] graph = new ArrayList[numCourses];
+        Arrays.setAll(graph, i -> new ArrayList<>(4));
+        for (int[] prerequisite : prerequisites) {
+            graph[prerequisite[1]].add(prerequisite[0]);
+        }
+        int[] visit = new int[numCourses];
+        for (int i = 0; i < numCourses; i++) {
+            if (graph[i].isEmpty() || visit[i]==2) {
+                continue;
+            }
+//            Arrays.fill(visit, 0);
+            if (!dfs(i, graph, visit)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public boolean dfs(int pos, List<Integer>[] graph, int[] visit) {
+        if (visit[pos] == 2) {
+            return true;
+        }
+        if (visit[pos] == 1) {
+            return false;
+        }
+        visit[pos] = 1;
+        for (Integer i : graph[pos]) {
+            if (!dfs(i, graph, visit)) {
+                return false;
+            }
+        }
+        visit[pos] = 2;
+        return true;
+    }
+
+    public boolean canFinish2(int numCourses, int[][] prerequisites) {
         if (prerequisites.length < 1) {
             return true;
         }

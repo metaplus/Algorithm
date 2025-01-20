@@ -7,6 +7,25 @@ public class Lc75SortColors {
         int count1 = 0;
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == 1) {
+                swap(nums, i, count1 + count0);
+                count1++;
+                continue;
+            }
+            if (nums[i] == 0) {
+                swap(nums, i, count0);
+                if (count1 > 0) {
+                    swap(nums, i, count1 + count0);
+                }
+                count0++;
+            }
+        }
+    }
+
+    public void sortColors2(int[] nums) {
+        int count0 = 0;
+        int count1 = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 1) {
                 swap(nums, i, count1++ + count0);
                 continue;
             }

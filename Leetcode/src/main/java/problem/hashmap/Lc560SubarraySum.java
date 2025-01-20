@@ -5,6 +5,37 @@ import java.util.Map;
 
 public class Lc560SubarraySum {
 
+
+    //FA
+    public int subarraySum2(int[] nums, int k) {
+
+        int sum = 0;
+        int left = 0;
+        int count = 0;
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+            if (sum == k) {
+                count++;
+                continue;
+            }
+            if (sum < k) {
+                continue;
+            }
+            while (left < i) {
+                sum -= nums[left];
+                left++;
+                if (sum == k) {
+                    count++;
+                    continue;
+                }
+                if (sum < k) {
+                    break;
+                }
+            }
+        }
+        return count;
+    }
+
     public int subarraySum(int[] nums, int k) {
 
         int preSum = 0;

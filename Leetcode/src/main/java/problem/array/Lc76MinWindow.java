@@ -8,6 +8,76 @@ import java.util.Objects;
 public class Lc76MinWindow {
 
     public String minWindow(String s, String t) {
+        if (t.length() > s.length()) {
+            return "";
+        }
+        int[] sCount = new int['z' - 'A' + 1];
+        int[] tCount = new int['z' - 'A' + 1];
+        for (char c : t.toCharArray()) {
+            tCount[c - 'A']++;
+        }
+        char[] chars = s.toCharArray();
+        int left = -1;
+        for (int i = 0; i < t.length(); i++) {
+            if (tCount[chars[i] - 'A'] > 0) {
+                if (left < 0) {
+                    left = i;
+                }
+                sCount[chars[i] - 'A']++;
+            }
+        }
+        if (Arrays.equals(sCount, tCount)) {
+            return s.substring(0, t.length());
+        }
+        int[] window = new int[2];
+        for (int i = t.length(); i < chars.length; i++) {
+            if (tCount[chars[i] - 'A'] > 0) {
+                if (left < 0) {
+                    left = i;
+                }
+                if (++sCount[chars[i] - 'A'] == tCount[chars[i] - 'A']) {
+                    if (match(sCount, tCount)) {
+                        updateWindow(i, left, window);
+                        for (int j = left; j < i; j++) {
+                            if (tCount[chars[j] - 'A'] > 0) {
+                                if (!match(sCount, tCount)) {
+                                    left = j;
+                                    break;
+                                }
+                                updateWindow(i, left, window);
+                                --sCount[chars[j] - 'A'];
+                            }
+                            left = j + 1;
+                        }
+                    }
+
+                }
+            }
+        }
+        if (window[1] == 0) {
+            return "";
+        }
+        return s.substring(window[0], window[0] + window[1]);
+    }
+
+    private void updateWindow(int i, int left, int[] window) {
+        int len = i - left + 1;
+        if (window[1] == 0 || len < window[1]) {
+            window[1] = len;
+            window[0] = left;
+        }
+    }
+
+    private boolean match(int[] sCount, int[] tCount) {
+        for (int i = 0; i < tCount.length; i++) {
+            if (tCount[i] > 0 && sCount[i] < tCount[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public String minWindow3(String s, String t) {
         int[] counts = new int[128];
         int[] countsT = new int[128];
         int charT = 0;

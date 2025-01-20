@@ -6,6 +6,37 @@ import java.util.Deque;
 public class Lc85MaximalRectangle {
 
     public int maximalRectangle(char[][] matrix) {
+        int row = matrix.length;
+        int col = matrix[0].length;
+        int[][] left = new int[row][col];
+        for (int i = 0; i < row; i++) {
+            left[i][0] = matrix[i][0] == '1' ? 1 : 0;
+            for (int j = 1; j < col; j++) {
+                left[i][j] = matrix[i][j] == '1' ? left[i][j - 1] + 1 : 0;
+            }
+        }
+        int areaMax = 0;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (matrix[i][j] == '0') {
+                    continue;
+                }
+                int area = left[i][j];
+                int leftMin = left[i][j];
+                for (int k = i - 1; k >= 0; k--) {
+                    if (matrix[k][j] == '0') {
+                        break;
+                    }
+                    leftMin = Math.min(leftMin, left[k][j]);
+                    area = Math.max(area, leftMin * (i - k + 1));
+                }
+                areaMax = Math.max(areaMax, area);
+            }
+        }
+        return areaMax;
+    }
+
+    public int maximalRectangle2(char[][] matrix) {
         int m = matrix.length;
         if (m == 0) {
             return 0;

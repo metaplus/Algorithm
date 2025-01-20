@@ -8,6 +8,36 @@ import java.util.TreeSet;
 public class Lc279NumSquares {
 
     public int numSquares(int n) {
+        List<Integer> squares = new ArrayList<>(32);
+        for (int i = 1; i <= n; i++) {
+            int mul = i * i;
+            if (mul > n) {
+                break;
+            }
+            if (mul == n) {
+                return 1;
+            }
+            squares.add(mul);
+        }
+        int[] dp = new int[n + 1];
+        for (int i = 1; i <= n; i++) {
+            for (Integer square : squares) {
+                if (i - square < 0) {
+                    break;
+                }
+                if (dp[i - square] > 0 || i - square == 0) {
+                    if (dp[i] > 0) {
+                        dp[i] = Math.min(dp[i], dp[i - square] + 1);
+                    } else {
+                        dp[i] = dp[i - square] + 1;
+                    }
+                }
+            }
+        }
+        return dp[n];
+    }
+
+    public int numSquares3(int n) {
         List<Integer> elements = new ArrayList<>();
         for (int i = 1; i <= n; i++) {
             int mul = i * i;

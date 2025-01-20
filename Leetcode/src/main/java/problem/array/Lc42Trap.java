@@ -3,6 +3,24 @@ package problem.array;
 public class Lc42Trap {
 
     public int trap(int[] height) {
+        int[] left = new int[height.length];
+        int[] right = new int[height.length];
+        left[0] = height[0];
+        for (int i = 1; i < height.length; i++) {
+            left[i] = Math.max(left[i - 1], height[i]);
+        }
+        right[right.length - 1] = height[height.length - 1];
+        for (int i = right.length - 2; i >= 0; i--) {
+            right[i] = Math.max(right[i + 1], height[i]);
+        }
+        int sum = 0;
+        for (int i = 1; i < height.length - 1; i++) {
+            sum += Math.min(left[i], right[i]) - height[i];
+        }
+        return sum;
+    }
+
+    public int trap3(int[] height) {
         int[] preMax = new int[height.length];
         int[] sufMax = new int[height.length];
         preMax[0] = height[0];

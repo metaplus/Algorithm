@@ -1,7 +1,25 @@
 package problem.dp.bag;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Lc494FindTargetSumWays {
+
     public int findTargetSumWays(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(0, 1);
+        for (int num : nums) {
+            Map<Integer, Integer> next = new HashMap<>(map.size());
+            for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+                next.merge(entry.getKey() + num, entry.getValue(), Integer::sum);
+                next.merge(entry.getKey() - num, entry.getValue(), Integer::sum);
+            }
+            map = next;
+        }
+        return map.getOrDefault(target, 0);
+    }
+
+    public int findTargetSumWays2(int[] nums, int target) {
         int[][] dp = new int[nums.length][2001];
         dp[0][nums[0] + 1000] = 1;
         dp[0][-nums[0] + 1000]++;

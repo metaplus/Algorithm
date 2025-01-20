@@ -2,8 +2,7 @@ package problem.pointer;
 
 import org.junit.jupiter.api.Test;
 import problem.array.parse.ArrayParse;
-
-import java.util.Arrays;
+import problem.array.pointer.Lc632SmallestRange;
 
 import static org.junit.jupiter.api.Assertions.*;
 

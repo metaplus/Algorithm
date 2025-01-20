@@ -1,7 +1,7 @@
 package problem.array;
 
 import org.junit.jupiter.api.Test;
-import problem.pointer.Lc209MinSubArrayLen;
+import problem.array.pointer.Lc209MinSubArrayLen;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

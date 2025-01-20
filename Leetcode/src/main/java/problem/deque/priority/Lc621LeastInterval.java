@@ -1,13 +1,41 @@
 package problem.deque.priority;
 
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
-import java.util.List;
 import java.util.PriorityQueue;
 
 public class Lc621LeastInterval {
 
     public int leastInterval(char[] tasks, int n) {
+        int[] count = new int[26];
+        for (char task : tasks) {
+            count[task - 'A']++;
+        }
+        PriorityQueue<State> queue = new PriorityQueue<>(16, Comparator.comparingInt(state -> state.start));
+        for (int i = 0; i < count.length; i++) {
+            if (count[i] > 0) {
+                State state = new State();
+                state.task = (char) ('A' + i);
+                state.left = count[i];
+                state.start = 0;
+                queue.add(state);
+            }
+        }
+        int time = 0;
+        while (!queue.isEmpty()) {
+            if (queue.peek().start <= time) {
+                State state = queue.poll();
+                if (--state.left > 0) {
+                    state.start += (n + 1);
+                    queue.add(state);
+                }
+            }
+            time++;
+        }
+        return time ;
+    }
+
+    public int leastInterval2(char[] tasks, int n) {
         int[] count = new int[26];
         for (char task : tasks) {
             count[task - 'A']++;
@@ -41,6 +69,12 @@ public class Lc621LeastInterval {
             index++;
         }
         return index;
+    }
+
+    private static class State {
+        private char task;
+        private int left;
+        private int start;
     }
 
     private static class Cell {

@@ -2,10 +2,23 @@ package problem.hashmap;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Lc1TwoSum {
 
     public int[] twoSum(int[] nums, int target) {
+        Map<Integer,Integer> map=new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if(map.containsKey(target-nums[i])){
+                return new int[]{map.get(target-nums[i]),i};
+            }
+            map.put(nums[i],i);
+        }
+        return nums;
+    }
+
+        public int[] twoSum2(int[] nums, int target) {
         int[][] sort = new int[nums.length][2];
         for (int i = 0; i < nums.length; i++) {
             sort[i][0] = nums[i];

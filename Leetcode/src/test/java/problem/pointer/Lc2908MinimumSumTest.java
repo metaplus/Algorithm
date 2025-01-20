@@ -2,7 +2,7 @@ package problem.pointer;
 
 import org.junit.jupiter.api.Test;
 import problem.array.parse.ArrayParse;
-import problem.prefix.Lc2908MinimumSum;
+import problem.dp.prefix.Lc2908MinimumSum;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

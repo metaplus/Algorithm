@@ -19,42 +19,32 @@ public class Lc148SortList {
         ListNode right = head.next;
         while (Objects.nonNull(right) && Objects.nonNull(right.next)) {
             left = left.next;
-            right = right.next;
-            if (Objects.nonNull(right)) {
-                right = right.next;
-            }
+            right = right.next.next;
         }
         ListNode next = left.next;
         left.next = null;
         left = mergeSort(head);
         right = mergeSort(next);
-        ListNode sort = null;
-        ListNode tail = null;
+        ListNode prev = new ListNode(0);
+        ListNode tail = prev;
         while (Objects.nonNull(left) || Objects.nonNull(right)) {
-            ListNode node;
             if (Objects.isNull(left)) {
-                node = right;
-                right = right.next;
-            } else if (Objects.isNull(right)) {
-                node = left;
+                tail.next = right;
+                break;
+            }
+            if (Objects.isNull(right)) {
+                tail.next = left;
+                break;
+            }
+            if (left.val < right.val) {
+                tail.next = left;
                 left = left.next;
             } else {
-                if (left.val < right.val) {
-                    node = left;
-                    left = left.next;
-                } else {
-                    node = right;
-                    right = right.next;
-                }
+                tail.next = right;
+                right = right.next;
             }
-            if (Objects.isNull(sort)) {
-                sort = node;
-                tail = node;
-            } else {
-                tail.next = node;
-                tail = node;
-            }
+            tail = tail.next;
         }
-        return sort;
+        return prev.next;
     }
 }

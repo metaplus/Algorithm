@@ -10,6 +10,11 @@ class Lc31NextPermutationTest {
     @Test
     void nextPermutation() {
         {
+            int[] arr = ArrayParse.parseIntArray("[2,3,1,3,3]");
+            new Lc31NextPermutation().nextPermutation(arr);
+            assertArrayEquals(ArrayParse.parseIntArray("[2,3,3,1,3]"), arr);
+        }
+        {
             int[] arr = ArrayParse.parseIntArray("[2,3,1]");
             new Lc31NextPermutation().nextPermutation(arr);
             assertArrayEquals(ArrayParse.parseIntArray("[3,1,2]"), arr);

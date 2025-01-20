@@ -2,7 +2,26 @@ package problem.dp.state;
 
 public class Lc309MaxProfit {
 
+
     public int maxProfit(int[] prices) {
+        int buy = 0;
+        int sold = 1;
+        int freeze = 2;
+        int[] dp = new int[3];
+        dp[buy] = -prices[0];
+        dp[sold] = 0;
+        dp[freeze] = 0;
+        for (int i = 1; i < prices.length; i++) {
+            int[] dp1 = new int[3];
+            dp1[buy] = Math.max(dp[buy],dp[freeze] - prices[i]);
+            dp1[sold] = dp[buy] + prices[i];
+            dp1[freeze] = Math.max(dp[freeze],dp[sold]);
+            dp = dp1;
+        }
+        return Math.max(dp[buy], Math.max(dp[sold], dp[freeze]));
+    }
+
+    public int maxProfit2(int[] prices) {
         if (prices.length < 2) {
             return 0;
         }

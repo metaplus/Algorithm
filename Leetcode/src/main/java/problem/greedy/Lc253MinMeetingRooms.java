@@ -2,11 +2,42 @@ package problem.greedy;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Map;
 import java.util.PriorityQueue;
 
 public class Lc253MinMeetingRooms {
 
     public int minMeetingRooms(int[][] intervals) {
+        Integer[] queue = new Integer[intervals.length * 2];
+        for (int i = 0; i < intervals.length; i++) {
+            queue[i * 2] = intervals[i][0];
+            queue[i * 2 + 1] = -intervals[i][1];
+        }
+        Arrays.sort(queue, (a, b) -> {
+            int sub = Math.abs(a) - Math.abs(b);
+            if (sub != 0) {
+                return sub;
+            }
+            if (a + b != 0) {
+                return sub;
+            }
+            return a < 0 ? -1 : 1;
+        });
+        int max = 0;
+        int count = 0;
+        for (Integer i : queue) {
+            if (i >= 0) {
+                if (++count > max) {
+                    max = count;
+                }
+                continue;
+            }
+            --count;
+        }
+        return max;
+    }
+
+    public int minMeetingRooms3(int[][] intervals) {
         if (intervals.length < 2) {
             return intervals.length;
         }

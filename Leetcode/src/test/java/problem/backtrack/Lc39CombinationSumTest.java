@@ -1,11 +1,13 @@
 package problem.backtrack;
 
+import base.AlgorithmTest;
 import org.junit.jupiter.api.Test;
 import problem.array.parse.ArrayParse;
+import problem.search.dfs.Lc39CombinationSum;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class Lc39CombinationSumTest {
+class Lc39CombinationSumTest extends AlgorithmTest {
 
     @Test
     void combinationSum() {

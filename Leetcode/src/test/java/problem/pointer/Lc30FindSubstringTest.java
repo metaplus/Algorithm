@@ -2,6 +2,7 @@ package problem.pointer;
 
 import org.junit.jupiter.api.Test;
 import problem.array.parse.ArrayParse;
+import problem.array.pointer.Lc30FindSubstring;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

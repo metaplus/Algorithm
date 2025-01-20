@@ -2,7 +2,26 @@ package problem.dp.sequence;
 
 public class Lc647CountSubstrings {
 
+
     public int countSubstrings(String s) {
+        char[] chars = s.toCharArray();
+        boolean[][] dp = new boolean[chars.length][chars.length];
+        int count=0;
+        for (int i = chars.length - 1; i >= 0; i--) {
+            dp[i][i] = true;
+            count++;
+            for (int j = i + 1; j < chars.length; j++) {
+                dp[i][j] = chars[i] == chars[j]
+                        && (j == i + 1 || dp[i + 1][j - 1]);
+                if(dp[i][j]){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    public int countSubstrings2(String s) {
         char[] chars = s.toCharArray();
         boolean[][] dp = new boolean[chars.length][chars.length];
         int count = chars.length;

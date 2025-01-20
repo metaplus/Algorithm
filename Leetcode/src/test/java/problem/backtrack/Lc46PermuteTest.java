@@ -2,6 +2,7 @@ package problem.backtrack;
 
 import org.junit.jupiter.api.Test;
 import problem.array.parse.ArrayParse;
+import problem.search.dfs.Lc46Permute;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

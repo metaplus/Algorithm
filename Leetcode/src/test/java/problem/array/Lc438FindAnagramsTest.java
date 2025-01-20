@@ -2,7 +2,7 @@ package problem.array;
 
 import org.eclipse.collections.impl.list.mutable.FastList;
 import org.junit.jupiter.api.Test;
-import problem.pointer.Lc438FindAnagrams;
+import problem.array.pointer.Lc438FindAnagrams;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

@@ -11,6 +11,10 @@ class Lc416CanPartitionTest {
     void canPartition() {
 
         assertFalse(new Lc416CanPartition().canPartition(
+                ArrayParse.parseIntArray("[2,2,3,5]\n" +
+                        "\n")
+        ));
+        assertFalse(new Lc416CanPartition().canPartition(
                 ArrayParse.parseIntArray("[9,5]")
         ));
         assertTrue(new Lc416CanPartition().canPartition(

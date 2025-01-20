@@ -3,7 +3,7 @@ package problem.tree;
 import org.eclipse.collections.impl.set.mutable.UnifiedSet;
 import org.junit.jupiter.api.Test;
 import problem.array.parse.ArrayParse;
-import problem.backtrack.Lc22GenerateParenthesis;
+import problem.search.dfs.Lc22GenerateParenthesis;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
