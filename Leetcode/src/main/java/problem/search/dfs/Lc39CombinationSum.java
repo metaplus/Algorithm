@@ -6,15 +6,40 @@ import java.util.List;
 
 public class Lc39CombinationSum {
 
-
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        Arrays.sort(candidates);
         List<List<Integer>> result = new ArrayList<>(32);
-        dfs(candidates, 0, target, 0, new ArrayList<>(), result);
+        dfs(candidates, target, 0, 0, new ArrayList<>(), result);
         return result;
     }
 
-    private void dfs(int[] candidates, int index, int target, int pre,
-                     List<Integer> comb, List<List<Integer>> result) {
+    private void dfs(int[] candidates, int target, int index, int sum,
+                     List<Integer> path, List<List<Integer>> result) {
+        if (sum == target) {
+            result.add(new ArrayList<>(path));
+            return;
+        }
+        if (sum > target) {
+            return;
+        }
+        for (int i = index; i < candidates.length; i++) {
+            if (sum + candidates[i] > target) {
+                break;
+            }
+            path.add(candidates[i]);
+            dfs(candidates, target, i, sum + candidates[i], path, result);
+            path.remove(path.size() - 1);
+        }
+    }
+
+    public List<List<Integer>> combinationSum3(int[] candidates, int target) {
+        List<List<Integer>> result = new ArrayList<>(32);
+        dfs3(candidates, 0, target, 0, new ArrayList<>(), result);
+        return result;
+    }
+
+    private void dfs3(int[] candidates, int index, int target, int pre,
+                      List<Integer> comb, List<List<Integer>> result) {
         if (index >= candidates.length) {
             return;
         }
@@ -25,13 +50,13 @@ public class Lc39CombinationSum {
             if (target == sum) {
                 result.add(new ArrayList<>(comb));
             } else {
-                dfs(candidates, index + 1, target, sum, comb, result);
+                dfs3(candidates, index + 1, target, sum, comb, result);
             }
         }
         for (int i = 0; i < step; i++) {
             comb.remove(comb.size() - 1);
         }
-        dfs(candidates, index + 1, target, pre, comb, result);
+        dfs3(candidates, index + 1, target, pre, comb, result);
     }
 
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {

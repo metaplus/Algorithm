@@ -1,12 +1,35 @@
 package problem.deque;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.Deque;
 
 public class Lc84LargestRectangleArea {
-
+    public int largestRectangleArea(int[] heights) {
+        Deque<Integer> deque = new ArrayDeque<>();
+        int[] left = new int[heights.length];
+        int[] right = new int[heights.length];
+        Arrays.fill(left, -1);
+        Arrays.fill(right, heights.length);
+        right[heights.length - 1] = heights.length;
+        for (int i = 0; i < heights.length; i++) {
+            while (!deque.isEmpty() && heights[deque.peek()] > heights[i]) {
+                right[deque.pop()] = i;
+            }
+            if (!deque.isEmpty()) {
+                left[i] = deque.peek();
+            }
+            deque.push(i);
+        }
+        int result = 0;
+        for (int i = 0; i < heights.length; i++) {
+            result = Math.max(result, heights[i] * (right[i] - left[i] - 1));
+        }
+        return result;
+    }
 
     // timeout 98/99
-    public int largestRectangleArea(int[] heights) {
+    public int largestRectangleArea4(int[] heights) {
         Deque<int[]> deque = new ArrayDeque<>(heights.length);
         int areaMax = 0;
         for (int i = 0; i < heights.length; i++) {

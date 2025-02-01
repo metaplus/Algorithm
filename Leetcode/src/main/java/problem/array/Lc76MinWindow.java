@@ -35,6 +35,48 @@ public class Lc76MinWindow {
                 if (left < 0) {
                     left = i;
                 }
+                ++sCount[chars[i] - 'A'];
+                while (match(sCount, tCount)) {
+                    updateWindow(i, left, window);
+                    --sCount[chars[left] - 'A'];
+                    left++;
+                }
+            }
+        }
+        if (window[1] == 0) {
+            return "";
+        }
+        return s.substring(window[0], window[0] + window[1]);
+    }
+
+    public String minWindow4(String s, String t) {
+        if (t.length() > s.length()) {
+            return "";
+        }
+        int[] sCount = new int['z' - 'A' + 1];
+        int[] tCount = new int['z' - 'A' + 1];
+        for (char c : t.toCharArray()) {
+            tCount[c - 'A']++;
+        }
+        char[] chars = s.toCharArray();
+        int left = -1;
+        for (int i = 0; i < t.length(); i++) {
+            if (tCount[chars[i] - 'A'] > 0) {
+                if (left < 0) {
+                    left = i;
+                }
+                sCount[chars[i] - 'A']++;
+            }
+        }
+        if (Arrays.equals(sCount, tCount)) {
+            return s.substring(0, t.length());
+        }
+        int[] window = new int[2];
+        for (int i = t.length(); i < chars.length; i++) {
+            if (tCount[chars[i] - 'A'] > 0) {
+                if (left < 0) {
+                    left = i;
+                }
                 if (++sCount[chars[i] - 'A'] == tCount[chars[i] - 'A']) {
                     if (match(sCount, tCount)) {
                         updateWindow(i, left, window);

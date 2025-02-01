@@ -1,22 +1,40 @@
 package problem.link;
 
-import annotation.Problem;
 import problem.link.node.ListNode;
 
 import java.util.Objects;
 
-/**
- * @Author: Jingxing Xu
- * @Date: 2019/9/14 18:38
- */
-@Problem(index = 24,
-        title = "Swap Nodes in Pairs",
-        description = "Given a linked list, swap every two adjacent nodes and return its head.\n" +
-                "\n" +
-                "You may not modify the values in the list's nodes, only nodes itself may be changed.")
+
 public class Lc24SwapPairs {
 
     public ListNode swapPairs(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode prev = new ListNode(0);
+        ListNode tail = prev;
+        ListNode node = head;
+        while (node != null) {
+            ListNode left = node;
+            node = node.next;
+            if (node != null) {
+                ListNode next = node.next;
+                ListNode right = node;
+                right.next = left;
+                left.next = null;
+                tail.next = right;
+                tail = left;
+                node = next;
+            } else {
+                tail.next = left;
+                tail = tail.next;
+            }
+            tail.next = null;
+        }
+        return prev.next;
+    }
+
+    public ListNode swapPairs3(ListNode head) {
         if (Objects.isNull(head) || Objects.isNull(head.next)) {
             return head;
         }

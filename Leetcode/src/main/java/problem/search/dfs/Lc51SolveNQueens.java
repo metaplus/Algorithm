@@ -1,12 +1,57 @@
 package problem.search.dfs;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
 public class Lc51SolveNQueens {
 
     public List<List<String>> solveNQueens(int n) {
+        List<List<String>> result = new ArrayList<>(32);
+        int[] rows = new int[n];
+        Arrays.fill(rows, -1);
+        dfs(n, rows, new ArrayList<>(32), result);
+        return result;
+    }
+
+    private void dfs(int n, int[] rows, List<String> path, List<List<String>> result) {
+        if (path.size() == n) {
+            result.add(new ArrayList<>(path));
+            return;
+        }
+        boolean[] disable = new boolean[n];
+        for (int i = 0; i < rows.length; i++) {
+            if (rows[i] >= 0) {
+                int left = i - (path.size() - rows[i]);
+                if (left >= 0) {
+                    disable[left] = true;
+                }
+                int right = i + (path.size() - rows[i]);
+                if (right < n) {
+                    disable[right] = true;
+                }
+            }
+        }
+        for (int i = 0; i < rows.length; i++) {
+            if (rows[i] >= 0) {
+                continue;
+            }
+            if (disable[i]) {
+                continue;
+            }
+            rows[i] = path.size();
+            char[] chars = new char[n];
+            Arrays.fill(chars, '.');
+            chars[i] = 'Q';
+            path.add(String.valueOf(chars));
+            dfs(n, rows, path, result);
+            rows[i] = -1;
+            path.remove(path.size() - 1);
+        }
+    }
+
+    public List<List<String>> solveNQueens2(int n) {
         List<List<String>> result = new ArrayList<>();
         dfs(n, 0, new Cell[n], new ArrayList<>(n), result);
         return result;

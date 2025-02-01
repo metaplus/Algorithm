@@ -10,6 +10,8 @@ class Lc153FindMinTest {
 
     @Test
     void findMin() {
+        assertEquals(1, new Lc153FindMin().findMin(ArrayParse.parseIntArray("[2,1]")));
+        assertEquals(1, new Lc153FindMin().findMin(ArrayParse.parseIntArray("[1]")));
         assertEquals(11, new Lc153FindMin().findMin(ArrayParse.parseIntArray("[11,13,15,17]")));
         assertEquals(0, new Lc153FindMin().findMin(ArrayParse.parseIntArray("[4,5,6,7,0,1,2]")));
     }

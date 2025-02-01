@@ -6,6 +6,31 @@ import java.util.Objects;
 
 public class Lc21MergeTwoLists {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        ListNode head = new ListNode(0);
+        ListNode tail = head;
+        while (Objects.nonNull(list1) || Objects.nonNull(list2)) {
+            if (Objects.isNull(list1)) {
+                tail.next = list2;
+                break;
+            }
+            if (Objects.isNull(list2)) {
+                tail.next = list1;
+                break;
+            }
+            if (list1.val < list2.val) {
+                tail.next = list1;
+                tail = list1;
+                list1 = list1.next;
+                continue;
+            }
+            tail.next = list2;
+            tail = list2;
+            list2 = list2.next;
+        }
+        return head.next;
+    }
+
+    public ListNode mergeTwoLists2(ListNode list1, ListNode list2) {
         if (Objects.isNull(list1)) {
             return list2;
         }

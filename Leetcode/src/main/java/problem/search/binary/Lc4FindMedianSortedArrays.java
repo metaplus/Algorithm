@@ -4,6 +4,43 @@ public class Lc4FindMedianSortedArrays {
 
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int size = nums1.length + nums2.length;
+        if (size % 2 == 1) {
+            return search(nums1, nums2, size / 2 + 1);
+        }
+        int left = search(nums1, nums2, size / 2);
+        int right = search(nums1, nums2, size / 2 + 1);
+        return (left + right) / 2.0;
+    }
+
+    public int search(int[] nums1, int[] nums2, int remain) {
+        int len1 = 0;
+        int len2 = 0;
+        while (remain > 0) {
+            if (len1 == nums1.length) {
+                return nums2[len2 + remain - 1];
+            }
+            if (len2 == nums2.length) {
+                return nums1[len1 + remain - 1];
+            }
+            if (remain == 1) {
+                return Math.min(nums1[len1], nums2[len2]);
+            }
+            int left = Math.min(len1 + remain / 2, nums1.length);
+            int right = Math.min(len2 + remain / 2, nums2.length);
+            if (nums1[left - 1] < nums2[right - 1]) {
+                remain -= left - len1;
+                len1 = left;
+                continue;
+            }
+            remain -= right - len2;
+            len2 = right;
+        }
+        return Integer.MAX_VALUE / 2;
+    }
+
+
+    public double findMedianSortedArrays3(int[] nums1, int[] nums2) {
         if (nums1.length == 0 || nums2.length == 0) {
             int[] nums = nums1.length == 0 ? nums2 : nums1;
             int len = nums1.length == 0 ? nums2.length : nums1.length;

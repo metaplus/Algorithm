@@ -3,6 +3,18 @@ package problem.dp;
 public class Lc198Rob {
 
     public int rob(int[] nums) {
+        int[] dp = new int[2];
+        dp[1] = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            int[] next = new int[2];
+            next[1] = nums[i] + dp[0];
+            next[0] = Math.max(dp[0], dp[1]);
+            dp = next;
+        }
+        return Math.max(dp[0], dp[1]);
+    }
+
+    public int rob2(int[] nums) {
         int[][] dp = new int[nums.length][2];
         dp[0][1] = nums[0];
         dp[0][0] = 0;

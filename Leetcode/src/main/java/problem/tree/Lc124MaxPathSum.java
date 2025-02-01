@@ -8,20 +8,40 @@ public class Lc124MaxPathSum {
 
     private static final int INF = Integer.MIN_VALUE / 2;
 
+
+    private int result = Integer.MIN_VALUE;
+
     public int maxPathSum(TreeNode root) {
-        State state = dfs(root);
+        dfs(root);
+        return result;
+    }
+
+    private int dfs(TreeNode node) {
+        if (Objects.isNull(node)) {
+            return 0;
+        }
+        int left = dfs(node.left);
+        int right = dfs(node.right);
+        result = Math.max(result, node.val);
+        result = Math.max(result, node.val + left + right);
+        result = Math.max(result, node.val + Math.max(left, right));
+        return Math.max(node.val, node.val + Math.max(left, right));
+    }
+
+    public int maxPathSum3(TreeNode root) {
+        State state = dfs3(root);
         return Math.max(state.xMax, state.yMax);
     }
 
-    private State dfs(TreeNode node) {
+    private State dfs3(TreeNode node) {
         if (Objects.isNull(node)) {
             return new State(INF, INF);
         }
         if (Objects.isNull(node.left) && Objects.isNull(node.right)) {
             return new State(node.val, node.val);
         }
-        State left = dfs(node.left);
-        State right = dfs(node.right);
+        State left = dfs3(node.left);
+        State right = dfs3(node.right);
         int yMax = node.val + Math.max(left.yMax, right.yMax);
         yMax = Math.max(yMax, node.val);
         int xMax = Math.max(left.xMax, right.xMax);

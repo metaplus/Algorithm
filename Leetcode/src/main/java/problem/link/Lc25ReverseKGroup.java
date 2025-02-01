@@ -7,6 +7,45 @@ import java.util.Objects;
 public class Lc25ReverseKGroup {
 
     public ListNode reverseKGroup(ListNode head, int k) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode prev = new ListNode(0);
+        ListNode tail = prev;
+        ListNode node = head;
+        while (node != null) {
+            ListNode group = node;
+            ListNode last = node;
+            for (int i = 0; i < k; i++) {
+                if (node == null) {
+                    tail.next = group;
+                    return prev.next;
+                }
+                last = node;
+                node = node.next;
+            }
+            last.next = null;
+            ListNode[] reverse = reverseNode(group);
+            tail.next = reverse[0];
+            tail = reverse[1];
+        }
+        return prev.next;
+    }
+
+
+    private ListNode[] reverseNode(ListNode node) {
+        ListNode prev = new ListNode(0);
+        ListNode tail = node;
+        while (node != null) {
+            ListNode next = node.next;
+            node.next = prev.next;
+            prev.next = node;
+            node = next;
+        }
+        return new ListNode[]{prev.next, tail};
+    }
+
+    public ListNode reverseKGroup3(ListNode head, int k) {
         if (Objects.isNull(head) || Objects.isNull(head.next) || k == 1) {
             return head;
         }

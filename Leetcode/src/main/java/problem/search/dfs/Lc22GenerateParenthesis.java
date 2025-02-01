@@ -7,7 +7,54 @@ import java.util.List;
 
 public class Lc22GenerateParenthesis {
 
+
     public List<String> generateParenthesis(int n) {
+        List<String> result = new ArrayList<>(32);
+        dfs(n, 0, 0, new StringBuilder(32), result);
+        return result;
+    }
+
+
+    private void dfs(int n, int left, int right, StringBuilder builder, List<String> result) {
+        if (right == n) {
+            result.add(builder.toString());
+            return;
+        }
+        if (left + 1 >= right && left + 1 <= n) {
+            builder.append('(');
+            dfs(n, left + 1, right, builder, result);
+            builder.deleteCharAt(builder.length() - 1);
+        }
+        if (left >= right + 1 && right + 1 <= n) {
+            builder.append(')');
+            dfs(n, left, right + 1, builder, result);
+            builder.deleteCharAt(builder.length() - 1);
+        }
+    }
+
+    private void dfs(int n, int left, int right, boolean open, StringBuilder builder, List<String> result) {
+        if (right == n) {
+            result.add(builder.toString());
+            return;
+        }
+        if (open) {
+            for (int i = 0; i < n - left; i++) {
+                builder.append('(');
+                dfs(n, left + i + 1, right, false, builder, result);
+            }
+            builder.delete(left + right, builder.length());
+            return;
+        }
+        if (left > right) {
+            for (int i = 0; i < left - right; i++) {
+                builder.append(')');
+                dfs(n, left, right + i + 1, true, builder, result);
+            }
+            builder.delete(left + right, builder.length());
+        }
+    }
+
+    public List<String> generateParenthesis3(int n) {
         StringBuilder builder = new StringBuilder(n * 2);
         List<String> result = new ArrayList<>();
         dfsOpen(n, 0, 0, 0, builder, result);

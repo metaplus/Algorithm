@@ -11,6 +11,23 @@ public class Lc55CanJump {
             return false;
         }
         int right = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            if (i > right) {
+                return false;
+            }
+            right = Math.max(right, i + nums[i]);
+        }
+        return right >= nums.length - 1;
+    }
+
+    public boolean canJump4(int[] nums) {
+        if (nums.length < 2) {
+            return true;
+        }
+        if (nums[0] == 0) {
+            return false;
+        }
+        int right = nums[0];
         for (int i = 1; i < nums.length && i <= right; i++) {
             right = Math.max(right, i + nums[i]);
         }

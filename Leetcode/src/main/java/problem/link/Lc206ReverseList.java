@@ -10,6 +10,21 @@ public class Lc206ReverseList {
         if (Objects.isNull(head) || Objects.isNull(head.next)) {
             return head;
         }
+        ListNode prev = new ListNode(0);
+        ListNode node = head;
+        while (Objects.nonNull(node)) {
+            ListNode next = node.next;
+            node.next = prev.next;
+            prev.next = node;
+            node = next;
+        }
+        return prev.next;
+    }
+
+    public ListNode reverseList3(ListNode head) {
+        if (Objects.isNull(head) || Objects.isNull(head.next)) {
+            return head;
+        }
         ListNode reverse = null;
         ListNode node = head;
         while (Objects.nonNull(node)) {

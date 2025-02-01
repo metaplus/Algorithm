@@ -7,7 +7,56 @@ import java.util.Objects;
 public class Lc148SortList {
 
     public ListNode sortList(ListNode head) {
-        return mergeSort(head);
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode[] result = quickSort(head);
+        return result[0];
+    }
+
+    public ListNode[] quickSort(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+        if (head.next == null) {
+            return new ListNode[]{head, head};
+        }
+        ListNode leftPrev = new ListNode(0);
+        ListNode leftTail = leftPrev;
+        ListNode rightPrev = new ListNode(0);
+        ListNode rightTail = rightPrev;
+        ListNode node = head.next;
+        head.next = null;
+        while (node != null) {
+            ListNode next = node.next;
+            if (node.val < head.val) {
+                leftTail.next = node;
+                leftTail = node;
+                leftTail.next = null;
+                node = next;
+                continue;
+            }
+            rightTail.next = node;
+            rightTail = node;
+            rightTail.next = null;
+            node = next;
+        }
+        ListNode[] left = quickSort(leftPrev.next);
+        ListNode[] right = quickSort(rightPrev.next);
+        ListNode[] result = new ListNode[2];
+        if (left != null) {
+            result[0] = left[0];
+            left[1].next = head;
+        } else {
+            result[0] = head;
+        }
+        if (right != null) {
+            result[1] = right[1];
+            head.next = right[0];
+        } else {
+            result[1] = head;
+        }
+        return result;
     }
 
 

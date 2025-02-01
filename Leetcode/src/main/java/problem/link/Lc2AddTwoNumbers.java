@@ -7,6 +7,40 @@ import java.util.Objects;
 public class Lc2AddTwoNumbers {
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        int pre = 0;
+        ListNode head = new ListNode(0);
+        ListNode tail = head;
+        while (l1 != null || l2 != null) {
+            int val = 0;
+            if (l1 == null) {
+                val = pre + l2.val;
+            } else if (l2 == null) {
+                val = pre + l1.val;
+            } else {
+                val = pre + l1.val + l2.val;
+            }
+            pre = val / 10;
+            val %= 10;
+            ListNode node = new ListNode();
+            node.val = val;
+            tail.next = node;
+            tail = node;
+            if (l1 != null) {
+                l1 = l1.next;
+            }
+            if (l2 != null) {
+                l2 = l2.next;
+            }
+        }
+        if (pre > 0) {
+            ListNode node = new ListNode();
+            node.val = pre;
+            tail.next = node;
+        }
+        return head.next;
+    }
+
+    public ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
         ListNode left = l1;
         ListNode right = l2;
         int pre = 0;

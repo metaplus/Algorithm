@@ -1,10 +1,30 @@
 package problem.array;
 
+import java.util.ArrayDeque;
 import java.util.PriorityQueue;
 
 public class Lc239MaxSlidingWindow {
 
     public int[] maxSlidingWindow(int[] nums, int k) {
+        ArrayDeque<int[]> deque = new ArrayDeque<>();
+        int[] result = new int[nums.length - k + 1];
+        for (int i = 0; i < nums.length; i++) {
+            while (!deque.isEmpty() && deque.peekLast()[0] <= nums[i]) {
+                deque.pollLast();
+            }
+            while (!deque.isEmpty() && deque.peekFirst()[1] <= i - k) {
+                deque.pollFirst();
+            }
+            deque.addLast(new int[]{nums[i], i});
+            if (i < k - 1) {
+                continue;
+            }
+            result[i - k + 1] = deque.peekFirst()[0];
+        }
+        return result;
+    }
+
+    public int[] maxSlidingWindow2(int[] nums, int k) {
         PriorityQueue<int[]> queue = new PriorityQueue<>(k * 2, (a, b) -> {
             if (a[0] != b[0]) {
                 return b[0] - a[0];
@@ -20,7 +40,7 @@ public class Lc239MaxSlidingWindow {
             while (queue.peek()[1] < i - k + 1) {
                 queue.poll();
             }
-            res[i - k + 1]=queue.peek()[0];
+            res[i - k + 1] = queue.peek()[0];
         }
         return res;
     }

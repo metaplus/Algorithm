@@ -5,6 +5,7 @@ import java.util.PriorityQueue;
 
 public class Lc295MedianFinder {
 
+
     static class MedianFinder {
 
         PriorityQueue<Integer> minHeap = new PriorityQueue<>();

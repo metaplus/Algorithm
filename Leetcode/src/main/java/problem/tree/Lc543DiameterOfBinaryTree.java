@@ -6,17 +6,37 @@ import java.util.Objects;
 
 public class Lc543DiameterOfBinaryTree {
 
+    private int diameterMax = 0;
+
     public int diameterOfBinaryTree(TreeNode root) {
-        int[] result = dfs(root);
-        return Math.max(result[0], result[1]-1);
+        if (root == null) {
+            return 0;
+        }
+        dfs(root);
+        return diameterMax - 1;
     }
 
-    private int[] dfs(TreeNode node) {
+    public int dfs(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }
+        int left = dfs(node.left);
+        int right = dfs(node.right);
+        diameterMax = Math.max(diameterMax, left + right + 1);
+        return Math.max(left, right) + 1;
+    }
+
+    public int diameterOfBinaryTree3(TreeNode root) {
+        int[] result = dfs3(root);
+        return Math.max(result[0], result[1] - 1);
+    }
+
+    private int[] dfs3(TreeNode node) {
         if (Objects.isNull(node)) {
             return new int[]{0, 0};
         }
-        int[] left = dfs(node.left);
-        int[] right = dfs(node.right);
+        int[] left = dfs3(node.left);
+        int[] right = dfs3(node.right);
         return new int[]{
                 Math.max(left[1] + right[1], Math.max(left[0], right[0])),
                 Math.max(left[1], right[1]) + 1,

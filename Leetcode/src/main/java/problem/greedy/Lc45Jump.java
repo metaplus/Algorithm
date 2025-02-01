@@ -6,8 +6,24 @@ import java.util.Deque;
 
 public class Lc45Jump {
 
-    // 74ms
     public int jump(int[] nums) {
+        int right = 0;
+        int next = 0;
+        int step = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (i <= right) {
+                next = Math.max(next, i + nums[i]);
+                continue;
+            }
+            right = next;
+            next = Math.max(next, i + nums[i]);
+            step++;
+        }
+        return step;
+    }
+
+    // 74ms
+    public int jump4(int[] nums) {
         int[] dp = new int[nums.length];
         Arrays.fill(dp, Integer.MAX_VALUE / 2);
         dp[nums.length - 1] = 0;

@@ -4,8 +4,75 @@ import java.util.*;
 
 public class Lc146LRUCache {
 
-
     public static class LRUCache {
+
+        private int capacity;
+        private Map<Integer, Cell> map;
+        private Cell head;
+        private Cell tail;
+
+        public LRUCache(int capacity) {
+            this.capacity = capacity;
+            this.map = new HashMap<>(capacity);
+            this.head = new Cell();
+            this.tail = head;
+        }
+
+        public int get(int key) {
+            Cell cell = map.get(key);
+            if (Objects.isNull(cell)) {
+                return -1;
+            }
+            if (tail != cell) {
+                cell.prev.next = cell.next;
+                cell.next.prev = cell.prev;
+                cell.prev = tail;
+                cell.next = null;
+                tail.next = cell;
+                tail = cell;
+            }
+            return cell.value;
+        }
+
+        public void put(int key, int value) {
+            Cell cell = map.get(key);
+            if (Objects.isNull(cell)) {
+                cell = new Cell();
+                cell.key = key;
+                cell.value = value;
+                cell.prev = tail;
+                tail.next = cell;
+                tail = cell;
+                map.put(key, cell);
+                if (map.size() > capacity) {
+                    Cell remove = head.next;
+                    head.next = remove.next;
+                    remove.next.prev = remove.prev;
+                    map.remove(remove.key);
+                }
+                return;
+            }
+            cell.value = value;
+            if (tail != cell) {
+                cell.prev.next = cell.next;
+                cell.next.prev = cell.prev;
+                cell.prev = tail;
+                cell.next = null;
+                tail.next = cell;
+                tail = cell;
+            }
+        }
+
+        public static class Cell {
+
+            private int key;
+            private int value;
+            private Cell prev;
+            private Cell next;
+        }
+    }
+
+    public static class LRUCache3 {
 
         private Map<Integer, Cell> map;
         private Deque<int[]> queue;
@@ -13,7 +80,7 @@ public class Lc146LRUCache {
         private int orders;
 
 
-        public LRUCache(int capacity) {
+        public LRUCache3(int capacity) {
             this.capacity = capacity;
             this.map = new HashMap<>(capacity + 1);
             this.queue = new ArrayDeque<>(capacity * 2);

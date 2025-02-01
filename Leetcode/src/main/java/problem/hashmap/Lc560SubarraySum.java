@@ -5,6 +5,19 @@ import java.util.Map;
 
 public class Lc560SubarraySum {
 
+    public int subarraySum(int[] nums, int k) {
+        int result = 0;
+        int sum = 0;
+        Map<Integer, Integer> pre = new HashMap<>();
+        pre.put(0, 1);
+        for (int num : nums) {
+            sum += num;
+            result += pre.getOrDefault(sum - k, 0);
+            pre.merge(sum, 1, Integer::sum);
+        }
+        return result;
+    }
+
 
     //FA
     public int subarraySum2(int[] nums, int k) {
@@ -36,7 +49,8 @@ public class Lc560SubarraySum {
         return count;
     }
 
-    public int subarraySum(int[] nums, int k) {
+
+    public int subarraySum3(int[] nums, int k) {
 
         int preSum = 0;
         Map<Integer, Integer> preCounts = new HashMap<>();

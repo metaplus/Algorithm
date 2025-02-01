@@ -8,9 +8,31 @@ public class Lc437PathSum {
 
     public Map<Long, Integer> state = new HashMap<>(32);
 
-    public int  pathSum(TreeNode root, int targetSum) {
+
+    private int count;
+
+    public int pathSum(TreeNode root, int targetSum) {
+        Map<Long, Integer> dp = new HashMap<>(32);
+        dp.put(0L, 1);
+        dfs(root, dp, 0, targetSum);
+        return count;
+    }
+
+    public void dfs(TreeNode node, Map<Long, Integer> dp, long pre, int targetSum) {
+        if (node == null) {
+            return;
+        }
+        pre += node.val;
+        count += dp.getOrDefault(pre - targetSum, 0);
+        dp.merge(pre, 1, Integer::sum);
+        dfs(node.left, dp, pre, targetSum);
+        dfs(node.right, dp, pre, targetSum);
+        dp.merge(pre, -1, Integer::sum);
+    }
+
+    public int pathSum3(TreeNode root, int targetSum) {
         dfs(root);
-        return state.getOrDefault(Long.valueOf(targetSum) , 0);
+        return state.getOrDefault(Long.valueOf(targetSum), 0);
     }
 
     public Map<Long, Integer> dfs(TreeNode node) {

@@ -10,6 +10,28 @@ public class Lc56Merge {
             }
             return b[1] - a[1];
         });
+        List<int[]> result = new ArrayList<>();
+        for (int[] interval : intervals) {
+            if (result.isEmpty()) {
+                result.add(interval);
+                continue;
+            }
+            if (result.get(result.size() - 1)[1] < interval[0]) {
+                result.add(interval);
+                continue;
+            }
+            result.get(result.size() - 1)[1] = Math.max(result.get(result.size() - 1)[1], interval[1]);
+        }
+        return result.toArray(new int[0][0]);
+    }
+
+    public int[][] merge3(int[][] intervals) {
+        Arrays.sort(intervals, (a, b) -> {
+            if (a[0] != b[0]) {
+                return a[0] - b[0];
+            }
+            return b[1] - a[1];
+        });
         Deque<int[]> deque = new ArrayDeque<>();
         int start = -1;
         List<int[]> list = new ArrayList<>();

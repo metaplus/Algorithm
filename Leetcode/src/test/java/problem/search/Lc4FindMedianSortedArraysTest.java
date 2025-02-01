@@ -10,10 +10,13 @@ class Lc4FindMedianSortedArraysTest {
 
     @Test
     void findMedianSortedArrays() {
-        assertEquals(2.5, new Lc4FindMedianSortedArrays()
-                .findMedianSortedArrays(ArrayParse.parseIntArray("[]"), ArrayParse.parseIntArray("[2,3]")));
+        assertEquals(9, new Lc4FindMedianSortedArrays()
+                .findMedianSortedArrays(ArrayParse.parseIntArray("[1,2,3,4,5]"), ArrayParse.parseIntArray("[6,7,8,9,10,11,12,13,14,15,16,17]")));
         assertEquals(2, new Lc4FindMedianSortedArrays()
                 .findMedianSortedArrays(ArrayParse.parseIntArray("[1,3]"), ArrayParse.parseIntArray("[2]")));
+        assertEquals(2.5, new Lc4FindMedianSortedArrays()
+                .findMedianSortedArrays(ArrayParse.parseIntArray("[]"), ArrayParse.parseIntArray("[2,3]")));
+
         assertEquals(1.5, new Lc4FindMedianSortedArrays()
                 .findMedianSortedArrays(ArrayParse.parseIntArray("[1,2]"), ArrayParse.parseIntArray("[-1,3]")));
         assertEquals(1, new Lc4FindMedianSortedArrays()

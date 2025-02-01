@@ -1,31 +1,36 @@
 package problem.dp;
 
-import annotation.Problem;
-
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-@Problem(
-        index = 32,
-        solution = Lc32LongestValidParentheses.class,
-        description = "Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed) "
-                + "parentheses substring.\n"
-                + "\n"
-                + "Example 1:\n"
-                + "\n"
-                + "Input: \"(()\"\n"
-                + "Output: 2\n"
-                + "Explanation: The longest valid parentheses substring is \"()\"\n"
-                + "Example 2:\n"
-                + "\n"
-                + "Input: \")()())\"\n"
-                + "Output: 4\n"
-                + "Explanation: The longest valid parentheses substring is \"()()\"\n"
-)
 public class Lc32LongestValidParentheses {
 
-    //fail
     public int longestValidParentheses(String s) {
+        if (s.isEmpty()) {
+            return 0;
+        }
+        char[] chars = s.toCharArray();
+        int[] dp = new int[chars.length];
+        int result = 0;
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] == ')') {
+                if (i > 0 && chars[i - 1] == '(') {
+                    dp[i] = (i - 2 >= 0 ? dp[i - 2] : 0) + 2;
+                }
+                if (i > 0 && chars[i - 1] == ')') {
+                    int left = i - 1 - dp[i - 1];
+                    if (left >= 0 && chars[left] == '(') {
+                        dp[i] = dp[i - 1] + 2 + (left - 1 >= 0 ? dp[left - 1] : 0);
+                    }
+                }
+                result = Math.max(result, dp[i]);
+            }
+        }
+        return result;
+    }
+
+    //fail
+    public int longestValidParentheses2(String s) {
         if (s.isEmpty()) {
             return 0;
         }
