@@ -1,0 +1,19 @@
+package problem.array;
+
+import java.util.Arrays;
+
+public class Lc1846MaximumElementAfterDecrementingAndRearranging {
+
+    public int maximumElementAfterDecrementingAndRearranging(int[] arr) {
+        Arrays.sort(arr);
+        int result = 1;
+        arr[0] = 1;
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > arr[i - 1] + 1) {
+                arr[i] = arr[i - 1] + 1;
+            }
+            result = Math.max(result, arr[i]);
+        }
+        return result;
+    }
+}

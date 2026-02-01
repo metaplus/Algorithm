@@ -1,4 +1,4 @@
-package problem.deque.priority;
+package problem.heap.priority;
 
 import java.util.Arrays;
 import java.util.Comparator;

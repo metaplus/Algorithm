@@ -2,6 +2,7 @@ package problem.deque.priority;
 
 import org.junit.jupiter.api.Test;
 import problem.array.parse.ArrayParse;
+import problem.heap.priority.Lc3462MaxSum;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
